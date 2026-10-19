@@ -244,8 +244,8 @@ const styles = StyleSheet.create((theme) => ({
     paddingHorizontal: theme.spacing[3],
     borderRadius: theme.borderRadius.lg,
     borderWidth: theme.borderWidth[1],
-    borderColor: theme.colors.border,
-    backgroundColor: theme.colors.surface2,
+    borderColor: theme.colors.borderGlass,
+    backgroundColor: theme.colors.surfaceMenu,
     ...theme.shadow.md,
   },
   previewText: {

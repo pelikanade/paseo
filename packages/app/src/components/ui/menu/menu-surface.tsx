@@ -40,8 +40,8 @@ const ThemedBottomSheetModal = withUnistyles(IsolatedBottomSheetModal, (theme) =
     borderTopLeftRadius: theme.borderRadius.xl,
     borderTopRightRadius: theme.borderRadius.xl,
     borderWidth: 1,
-    backgroundColor: theme.colors.surface0,
-    borderColor: theme.colors.border,
+    backgroundColor: theme.colors.surfaceMenu,
+    borderColor: theme.colors.borderGlass,
   },
   handleIndicatorStyle: {
     width: 36,

@@ -1665,7 +1665,7 @@ const styles = StyleSheet.create((theme) => ({
     flexGrow: 0,
     flexShrink: 0,
     borderLeftWidth: 1,
-    borderLeftColor: theme.colors.border,
+    borderLeftColor: theme.colors.borderGlass,
   },
   splitResizeHandle: {
     position: "absolute",
@@ -1696,7 +1696,7 @@ const styles = StyleSheet.create((theme) => ({
     borderRadius: theme.borderRadius.base,
   },
   sortTriggerHovered: {
-    backgroundColor: theme.colors.surfaceSidebarHover,
+    backgroundColor: theme.colors.surfaceRowHover,
   },
   sortTriggerText: {
     fontSize: theme.fontSize.sm,
@@ -1738,7 +1738,7 @@ const styles = StyleSheet.create((theme) => ({
   retryButton: {
     borderRadius: theme.borderRadius.full,
     borderWidth: theme.borderWidth[1],
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     paddingHorizontal: theme.spacing[3],
     paddingVertical: theme.spacing[1],
   },
@@ -1833,7 +1833,7 @@ const styles = StyleSheet.create((theme) => ({
     aspectRatio: 1,
   },
   sheetBackground: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceMenu,
   },
   handleIndicator: {
     backgroundColor: theme.colors.palette.zinc[600],
@@ -1845,7 +1845,7 @@ const styles = StyleSheet.create((theme) => ({
     paddingHorizontal: theme.spacing[4],
     paddingVertical: theme.spacing[3],
     borderBottomWidth: theme.borderWidth[1],
-    borderBottomColor: theme.colors.border,
+    borderBottomColor: theme.colors.borderGlass,
   },
   sheetTitle: {
     fontSize: theme.fontSize.base,

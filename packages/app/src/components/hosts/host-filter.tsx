@@ -109,15 +109,15 @@ const styles = StyleSheet.create((theme) => ({
     paddingVertical: theme.spacing[1.5],
     paddingHorizontal: theme.spacing[3],
     borderRadius: theme.borderRadius.md,
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCard,
     borderWidth: theme.borderWidth[1],
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
   },
   filterTriggerHovered: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceRowHover,
   },
   filterTriggerPressed: {
-    backgroundColor: theme.colors.surface3,
+    backgroundColor: theme.colors.surfaceRowPressed,
   },
   filterTriggerText: {
     color: theme.colors.foreground,

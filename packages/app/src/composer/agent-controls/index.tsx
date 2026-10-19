@@ -1981,10 +1981,10 @@ const styles = StyleSheet.create((theme) => ({
     borderRadius: theme.borderRadius.full,
   },
   modeBadgeHovered: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   modeBadgePressed: {
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   disabledBadge: {
     opacity: 0.5,

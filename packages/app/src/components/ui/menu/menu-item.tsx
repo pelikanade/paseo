@@ -462,9 +462,9 @@ const styles = StyleSheet.create((theme) => ({
     paddingHorizontal: theme.spacing[2],
     paddingVertical: theme.spacing[1],
     borderWidth: theme.borderWidth[1],
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     borderRadius: theme.borderRadius.md,
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceCard,
   },
   fieldFocused: {
     borderColor: theme.colors.borderAccent,
@@ -478,14 +478,14 @@ const styles = StyleSheet.create((theme) => ({
     paddingHorizontal: 0,
   },
   itemHovered: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   itemPressed: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   // The row you are inside, not the value you chose. A chosen value is marked by its check.
   itemActive: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceRowSelected,
   },
   itemDisabled: {
     opacity: 0.5,

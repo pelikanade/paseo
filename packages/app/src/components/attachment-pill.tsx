@@ -161,7 +161,7 @@ const styles = StyleSheet.create((theme) => ({
     alignItems: "center",
     gap: theme.spacing[2],
     paddingHorizontal: theme.spacing[3],
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCard,
   },
   labelIcon: {
     width: 18,
@@ -187,7 +187,7 @@ const styles = StyleSheet.create((theme) => ({
   thumbnailPlaceholder: {
     width: ATTACHMENT_CONTENT_HEIGHT,
     height: ATTACHMENT_CONTENT_HEIGHT,
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCard,
   },
   closeButton: {
     position: "absolute",
@@ -196,9 +196,9 @@ const styles = StyleSheet.create((theme) => ({
     width: 24,
     height: 24,
     borderRadius: 12,
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceCard,
     borderWidth: theme.borderWidth[1],
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     alignItems: "center",
     justifyContent: "center",
     zIndex: 1,

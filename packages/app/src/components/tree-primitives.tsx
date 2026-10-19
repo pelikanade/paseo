@@ -53,7 +53,7 @@ export const workspaceTreeRowStyles = StyleSheet.create((theme: Theme) => ({
     paddingRight: WORKSPACE_PANE_TRAILING_GLYPH_RAIL,
   },
   active: {
-    backgroundColor: theme.colors.surfaceSidebarHover,
+    backgroundColor: theme.colors.surfaceRowSelected,
   },
   name: { color: theme.colors.foreground, opacity: 0.76 },
   nameHovered: { opacity: 1 },

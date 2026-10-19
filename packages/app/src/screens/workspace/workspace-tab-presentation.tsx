@@ -283,7 +283,7 @@ const styles = StyleSheet.create((theme) => ({
     bottom: getStatusRingOffset(DEFAULT_STATUS_DOT_OFFSET, STATUS_INDICATOR_DOT_SIZE),
   },
   statusDotBorderDefault: {
-    borderColor: theme.colors.surface0,
+    borderColor: theme.colors.borderGlass,
   },
   statusAlertOverlay: {
     position: "absolute",
@@ -326,7 +326,7 @@ const styles = StyleSheet.create((theme) => ({
     paddingVertical: theme.spacing[2],
   },
   optionRowActive: {
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceRowSelected,
   },
   optionLeadingSlot: {
     width: 16,

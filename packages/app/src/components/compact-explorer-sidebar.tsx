@@ -240,8 +240,8 @@ export function NativeExplorerSidebarDock({
     [animatedWidthStyle, insets.top, isOpen, theme.colors.surfaceSidebar],
   );
   const dockContentStyle = useMemo(
-    () => [styles.nativeDockContent, { borderLeftColor: theme.colors.border }],
-    [theme.colors.border],
+    () => [styles.nativeDockContent, { borderLeftColor: theme.colors.borderGlass }],
+    [theme.colors.borderGlass],
   );
 
   return (
@@ -531,7 +531,7 @@ const styles = StyleSheet.create((theme) => ({
     alignItems: "center",
     justifyContent: "space-between",
     borderBottomWidth: 1,
-    borderBottomColor: theme.colors.border,
+    borderBottomColor: theme.colors.borderGlass,
   },
   tabsContainer: (isCompact: boolean) => ({
     flexDirection: "row",
@@ -549,7 +549,7 @@ const styles = StyleSheet.create((theme) => ({
     borderRadius: theme.borderRadius.md,
   }),
   tabActive: {
-    backgroundColor: theme.colors.surfaceSidebarHover,
+    backgroundColor: theme.colors.surfaceRowHover,
   },
   tabText: {
     fontSize: theme.fontSize.base,

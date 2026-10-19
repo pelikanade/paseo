@@ -1760,11 +1760,11 @@ const animatedStaticStyles = RNStyleSheet.create({
 const styles = StyleSheet.create((theme) => ({
   root: {
     flex: 1,
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: "transparent",
   },
   container: {
     flex: 1,
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: "transparent",
   },
   contentContainer: {
     flex: 1,
@@ -1786,7 +1786,7 @@ const styles = StyleSheet.create((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     gap: theme.spacing[3],
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCard,
     borderWidth: theme.borderWidth[1],
     borderColor: theme.colors.statusDanger,
     borderRadius: theme.borderRadius["2xl"],
@@ -1803,7 +1803,7 @@ const styles = StyleSheet.create((theme) => ({
     right: 0,
     bottom: 0,
     left: 0,
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: theme.colors.surfaceMenu,
     alignItems: "center",
     justifyContent: "center",
     zIndex: 40,

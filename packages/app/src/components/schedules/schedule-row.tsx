@@ -409,10 +409,10 @@ const styles = StyleSheet.create((theme) => ({
     gap: theme.spacing[3],
   },
   rowHovered: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   rowPressed: {
-    backgroundColor: theme.colors.surface3,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   main: {
     flex: 1,
@@ -446,6 +446,6 @@ const styles = StyleSheet.create((theme) => ({
     borderRadius: theme.borderRadius.base,
   },
   kebabTriggerHovered: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.interactionHighlight,
   },
 }));

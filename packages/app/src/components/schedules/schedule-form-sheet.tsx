@@ -1043,9 +1043,9 @@ const styles = StyleSheet.create((theme) => {
     readonlyField: {
       flexDirection: "row",
       alignItems: "center",
-      backgroundColor: theme.colors.surface2,
+      backgroundColor: theme.colors.surfaceCard,
       borderWidth: 1,
-      borderColor: theme.colors.border,
+      borderColor: theme.colors.borderGlass,
     },
     readonlyFieldSm: {
       ...geometry.formTextInputSm,

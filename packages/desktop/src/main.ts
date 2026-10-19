@@ -677,6 +677,10 @@ async function createWindow(
 ): Promise<BrowserWindow> {
   const iconPath = await getEffectiveAppIconPath();
   const systemTheme = resolveSystemWindowTheme();
+  // Linux is the platform this package targets. A transparent window lets the
+  // compositor (Hyprland here) blur the wallpaper behind the renderer's glass
+  // tint; the renderer enables that tint on the same platform.
+  const glassWindow = process.platform === "linux";
 
   // Only the first window of a session restores and persists saved geometry.
   // Additional windows (⌘N, second-instance, "Open in new window") open at the
@@ -696,7 +700,9 @@ async function createWindow(
     title,
     ...resolveWindowBounds(restoredWindowState),
     show: false,
-    backgroundColor: getWindowBackgroundColor(systemTheme),
+    ...(glassWindow
+      ? { transparent: true, backgroundColor: "rgba(0, 0, 0, 0)" }
+      : { backgroundColor: getWindowBackgroundColor(systemTheme) }),
     ...(iconPath ? { icon: iconPath } : {}),
     ...getMainWindowChromeOptions({
       mode: DESKTOP_WINDOW_CHROME_MODE,

@@ -52,7 +52,7 @@ const styles = StyleSheet.create((theme) => ({
     left: 0,
     right: 0,
     bottom: 0,
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceMenu,
     alignItems: "center",
     justifyContent: "center",
     gap: theme.spacing[3],

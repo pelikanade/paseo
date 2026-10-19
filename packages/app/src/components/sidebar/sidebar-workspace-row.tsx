@@ -5,7 +5,6 @@ import { StyleSheet } from "react-native-unistyles";
 import type { HostBadgeModel } from "@/hosts/appearance";
 import type { SidebarWorkspaceEntry } from "@/hooks/use-sidebar-workspaces-list";
 import { density } from "@/styles/density";
-import type { SidebarSurfaceBackdrop } from "@/styles/surface-backdrop";
 import type { DraggableListDragHandleProps } from "@/components/draggable-list.types";
 import type { ShortcutKey } from "@/utils/format-shortcut";
 import { WorkspaceRenameModal } from "@/components/workspace-rename-modal";
@@ -335,7 +334,6 @@ function WorkspaceRowBody({
               >
                 <WorkspaceRowTrailingActions
                   workspace={workspace}
-                  backdrop={backdrop}
                   trailing={trailing}
                   isHovered={isHovered}
                   isTouchPlatform={isTouchPlatform}
@@ -364,7 +362,6 @@ function WorkspaceRowBody({
 
 function WorkspaceRowTrailingActions({
   workspace,
-  backdrop,
   trailing,
   isHovered,
   isTouchPlatform,
@@ -383,7 +380,6 @@ function WorkspaceRowTrailingActions({
   onRename,
 }: {
   workspace: SidebarWorkspaceEntry;
-  backdrop: SidebarSurfaceBackdrop;
   trailing: SidebarWorkspaceTrailing;
   isHovered: boolean;
   isTouchPlatform: boolean;
@@ -406,7 +402,6 @@ function WorkspaceRowTrailingActions({
   const {
     trailingPresentation,
     showKebab: showKebabInSlot,
-    showScrim,
     renderSlot,
     reserveSlotWidth,
   } = resolveTrailingActionVisibility({
@@ -429,10 +424,7 @@ function WorkspaceRowTrailingActions({
           <SidebarWorkspaceTrailingActionBase presentation={trailingPresentation}>
             <SidebarWorkspaceTrailingContent workspace={workspace} trailing={trailing} />
           </SidebarWorkspaceTrailingActionBase>
-          <SidebarWorkspaceTrailingActionOverlay
-            visible={kebab.showKebab}
-            scrimBackdrop={showScrim ? backdrop : undefined}
-          >
+          <SidebarWorkspaceTrailingActionOverlay visible={kebab.showKebab}>
             {onArchive ? (
               <SidebarWorkspaceMenu
                 {...kebab.menuProps}
@@ -499,21 +491,21 @@ const styles = StyleSheet.create((theme) => ({
     userSelect: "none",
   },
   workspaceRowHovered: {
-    backgroundColor: theme.colors.surfaceSidebarHover,
+    backgroundColor: theme.colors.surfaceRowHover,
   },
   workspaceRowPressed: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceRowPressed,
   },
   workspaceRowDragging: {
     backgroundColor: theme.colors.surface2,
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     transform: [{ scale: 1.02 }],
     zIndex: 3,
     ...theme.shadow.md,
   },
   sidebarRowSelected: {
-    backgroundColor: theme.colors.surfaceSidebarSelected,
+    backgroundColor: theme.colors.surfaceRowSelected,
   },
   workspaceCreatingText: {
     color: theme.colors.foregroundMuted,

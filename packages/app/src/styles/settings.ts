@@ -26,10 +26,10 @@ export const settingsStyles = StyleSheet.create((theme) => ({
     fontSize: theme.fontSize.sm,
   },
   card: {
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCard,
     borderRadius: theme.borderRadius.lg,
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     overflow: "hidden",
   },
   row: {
@@ -41,7 +41,7 @@ export const settingsStyles = StyleSheet.create((theme) => ({
   },
   rowBorder: {
     borderTopWidth: 1,
-    borderTopColor: theme.colors.border,
+    borderTopColor: theme.colors.borderGlass,
   },
   rowContent: {
     flex: 1,

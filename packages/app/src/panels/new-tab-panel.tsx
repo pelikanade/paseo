@@ -304,9 +304,9 @@ const styles = StyleSheet.create((theme) => ({
     borderColor: "transparent",
     outlineWidth: 0,
     outlineColor: "transparent",
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCard,
   },
-  rowHovered: { backgroundColor: theme.colors.surface2 },
+  rowHovered: { backgroundColor: theme.colors.surfaceRowHover },
   rowFocused: { borderColor: theme.colors.borderAccent },
   rowPressed: { opacity: 0.85 },
   rowLabel: { flex: 1, color: theme.colors.foreground },
@@ -344,6 +344,6 @@ const styles = StyleSheet.create((theme) => ({
     opacity: theme.opacity[50],
   },
   editProfilesHovered: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceRowHover,
   },
 }));

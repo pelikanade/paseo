@@ -92,8 +92,8 @@ const styles = StyleSheet.create((theme) => ({
     padding: theme.spacing[3],
     borderRadius: theme.spacing[2],
     borderWidth: 1,
-    backgroundColor: theme.colors.surface1,
-    borderColor: theme.colors.border,
+    backgroundColor: theme.colors.surfaceCard,
+    borderColor: theme.colors.borderGlass,
     gap: theme.spacing[2],
   },
   containerCompact: {

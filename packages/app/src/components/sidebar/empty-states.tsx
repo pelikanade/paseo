@@ -111,7 +111,7 @@ const styles = StyleSheet.create((theme) => ({
     marginTop: theme.spacing[3],
     padding: theme.spacing[4],
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     borderRadius: theme.borderRadius.lg,
   },
   copy: {

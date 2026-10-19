@@ -21,6 +21,7 @@ import {
 } from "react-native";
 import { Keyframe, runOnJS } from "react-native-reanimated";
 import { StyleSheet } from "react-native-unistyles";
+import { glassBackdropFilter } from "@/styles/theme";
 import { FloatingScrollView, FloatingSurface } from "@/components/ui/floating";
 import { isWeb } from "@/constants/platform";
 import type { KeyboardFocusScope } from "@/keyboard/actions";
@@ -538,11 +539,12 @@ const styles = StyleSheet.create((theme) => ({
     left: 0,
   },
   content: {
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceMenu,
     borderWidth: 1,
     borderColor: theme.colors.borderAccent,
     borderRadius: theme.borderRadius.lg,
     overflow: "hidden",
+    ...glassBackdropFilter,
     ...theme.shadow.md,
   },
 }));

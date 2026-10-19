@@ -361,10 +361,10 @@ describe("shared Markdown theme colours", () => {
     expect(style.table).toMatchObject({
       color: theme.colors.foreground,
       headerTextColor: theme.colors.foreground,
-      headerBackgroundColor: theme.colors.surface2,
-      rowEvenBackgroundColor: theme.colors.surface0,
-      rowOddBackgroundColor: theme.colors.surface1,
-      borderColor: theme.colors.border,
+      headerBackgroundColor: theme.colors.surfaceCard,
+      rowEvenBackgroundColor: "transparent",
+      rowOddBackgroundColor: "transparent",
+      borderColor: theme.colors.borderGlass,
     });
     expect(style.list).toMatchObject({
       color: theme.colors.foreground,
@@ -390,26 +390,26 @@ it.each([
     const { markdownStyle: style } = createMarkdownStyles(theme, { blockGap: 16 });
     expect(style.blockquote).toMatchObject({
       color: `${theme.colors.foreground}cc`,
-      backgroundColor: theme.colors.surface1,
-      borderColor: theme.colors.surface2,
+      backgroundColor: theme.colors.surfaceCard,
+      borderColor: theme.colors.borderGlass,
       admonitions: {
-        note: { color: theme.colors.accentBright, backgroundColor: theme.colors.surface2 },
-        tip: { color: theme.colors.statusSuccess, backgroundColor: theme.colors.surface2 },
-        important: { color: theme.colors.statusMerged, backgroundColor: theme.colors.surface2 },
-        warning: { color: theme.colors.statusWarning, backgroundColor: theme.colors.surface2 },
-        caution: { color: theme.colors.statusDanger, backgroundColor: theme.colors.surface2 },
+        note: { color: theme.colors.accentBright, backgroundColor: theme.colors.surfaceCard },
+        tip: { color: theme.colors.statusSuccess, backgroundColor: theme.colors.surfaceCard },
+        important: { color: theme.colors.statusMerged, backgroundColor: theme.colors.surfaceCard },
+        warning: { color: theme.colors.statusWarning, backgroundColor: theme.colors.surfaceCard },
+        caution: { color: theme.colors.statusDanger, backgroundColor: theme.colors.surfaceCard },
       },
     });
     expect(style.code).toMatchObject({
       color: theme.colors.foreground,
-      backgroundColor: theme.colors.surface2,
+      backgroundColor: theme.colors.surfaceCode,
       borderColor: "transparent",
     });
     expect(style.link?.color).toBe(theme.colors.accentBright);
     expect(style.linkVariants?.["^(?!https?://).+"]).toEqual({
       color: theme.colors.accentBright,
     });
-    expect(style.thematicBreak?.color).toBe(theme.colors.border);
+    expect(style.thematicBreak?.color).toBe(theme.colors.borderGlass);
   },
 );
 

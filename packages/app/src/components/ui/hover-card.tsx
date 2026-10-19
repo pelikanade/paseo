@@ -21,6 +21,7 @@ import {
   useWebOverlayRegistration,
 } from "@/lib/overlay-root";
 import { FloatingSurface } from "@/components/ui/floating";
+import { glassBackdropFilter } from "@/styles/theme";
 import { isWeb } from "@/constants/platform";
 import { useHoverSafeZone } from "@/hooks/use-hover-safe-zone";
 import {
@@ -408,10 +409,11 @@ const styles = StyleSheet.create((theme) => ({
     zIndex: 1000,
   },
   surface: {
-    backgroundColor: theme.colors.popover,
+    backgroundColor: theme.colors.surfaceMenu,
     borderWidth: theme.borderWidth[1],
     borderColor: theme.colors.borderAccent,
     borderRadius: theme.borderRadius.xl,
+    ...glassBackdropFilter,
     ...theme.shadow.md,
     zIndex: 1000,
   },

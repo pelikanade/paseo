@@ -203,7 +203,7 @@ const styles = StyleSheet.create((theme) => ({
     width: 36,
     height: 36,
     borderRadius: theme.borderRadius.md,
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceCard,
     alignItems: "center",
     justifyContent: "center",
   },

@@ -305,7 +305,7 @@ const styles = StyleSheet.create((theme) => ({
     height: ICON_SIZE.md,
     borderRadius: ICON_SIZE.md / 2,
     borderWidth: theme.borderWidth[1],
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
   },
   renameButton: {
     padding: theme.spacing[1],
@@ -329,7 +329,7 @@ const styles = StyleSheet.create((theme) => ({
     paddingVertical: theme.spacing[3],
     paddingHorizontal: theme.spacing[4],
     borderTopWidth: theme.borderWidth[1],
-    borderTopColor: theme.colors.border,
+    borderTopColor: theme.colors.borderGlass,
     backgroundColor: theme.colors.surfaceSidebar,
   },
   previewTitle: {

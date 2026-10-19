@@ -128,10 +128,10 @@ const styles = StyleSheet.create((theme) => ({
     marginHorizontal: -theme.spacing[1],
     paddingHorizontal: theme.spacing[4],
     borderRadius: theme.borderRadius["2xl"],
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCard,
   },
   sheetRowInteractive: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceRowHover,
   },
   sheetGlyph: {
     width: 20,
@@ -156,10 +156,10 @@ const styles = StyleSheet.create((theme) => ({
     fontWeight: theme.fontWeight.normal,
   },
   hovered: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   pressed: {
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   disabled: {
     opacity: 0.5,

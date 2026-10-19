@@ -204,7 +204,11 @@ export function registerWindowManager(input: { mode: DesktopWindowChromeMode }):
       return;
     }
 
-    if (nextUpdate.backgroundColor) {
+    // The Linux window is transparent so the compositor can blur the desktop
+    // behind the renderer's glass tint. The renderer's chrome sync sends the
+    // theme's opaque surface colour; applying it here would paint over the
+    // transparency, so only platforms with an opaque window use it.
+    if (nextUpdate.backgroundColor && process.platform !== "linux") {
       win.setBackgroundColor(nextUpdate.backgroundColor);
     }
 

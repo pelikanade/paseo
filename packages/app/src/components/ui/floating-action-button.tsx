@@ -73,7 +73,7 @@ const styles = StyleSheet.create((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: theme.borderRadius.full,
-    backgroundColor: theme.colors.surface3,
+    backgroundColor: theme.colors.surfaceMenu,
     ...theme.shadow.md,
   },
   labeled: {

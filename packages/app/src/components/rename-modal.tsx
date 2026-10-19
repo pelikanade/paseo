@@ -175,13 +175,13 @@ const styles = StyleSheet.create((theme) => ({
     paddingBottom: theme.spacing[2],
   },
   input: {
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: theme.colors.surfaceCard,
     color: theme.colors.foreground,
     paddingVertical: theme.spacing[3],
     paddingHorizontal: theme.spacing[3],
     borderRadius: theme.borderRadius.md,
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     fontSize: theme.fontSize.base,
   },
   errorText: {

@@ -300,9 +300,9 @@ const styles = StyleSheet.create((theme) => ({
     maxWidth: "92%",
     maxHeight: "80%",
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     borderRadius: theme.borderRadius.lg,
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: theme.colors.surfaceMenu,
     overflow: "hidden",
     ...theme.shadow.lg,
   },
@@ -311,7 +311,7 @@ const styles = StyleSheet.create((theme) => ({
     paddingHorizontal: theme.spacing[4],
     paddingVertical: theme.spacing[4],
     borderBottomWidth: 1,
-    borderBottomColor: theme.colors.border,
+    borderBottomColor: theme.colors.borderGlass,
   },
   title: {
     color: theme.colors.foreground,
@@ -339,7 +339,7 @@ const styles = StyleSheet.create((theme) => ({
     paddingVertical: theme.spacing[3],
   },
   rowActive: {
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   rowIconSlot: {
     width: 18,

@@ -54,7 +54,12 @@ import { Text, View } from "react-native";
 import { z } from "zod";
 
 function Row({ item }) {
-  return <View testID="plugin-tool-row"><Text>{item.data.label}</Text></View>;
+  // Same height as a native tool badge so pitch is comparable in the spacing test.
+  return (
+    <View testID="plugin-tool-row" style={{ height: 32, justifyContent: "center" }}>
+      <Text>{item.data.label}</Text>
+    </View>
+  );
 }
 
 export default function contribute(client) {
@@ -218,7 +223,9 @@ export async function withAppendTimelinePlugin(
   const agent = await seedMockAgentWorkspace({
     repoPrefix: "timeline-append-",
     title: "Timeline append regression",
-    model: "e2e-fast-stream",
+    // The fast stream finishes before its queue reaches the first tool call, so the spacing
+    // baseline needs a model that emits native tool rows within the turn.
+    model: "ten-second-stream",
   });
   try {
     await withDirectoryPlugin({
@@ -241,25 +248,34 @@ export async function withAppendTimelinePlugin(
 }
 
 export interface TimelineRowRects {
+  assistantTops: number[];
   assistantBottoms: number[];
   pluginRows: Array<{ top: number; bottom: number }>;
+  nativeToolRows: Array<{ top: number; bottom: number }>;
   footerTop: number | null;
+  footerMarginTop: number | null;
 }
 
 /** Vertical geometry in CSS pixels, independent of scroll position. */
 export async function readTimelineRowRects(page: Page): Promise<TimelineRowRects> {
   return page.evaluate(() => {
+    const elements = (testId: string) =>
+      Array.from(document.querySelectorAll(`[data-testid="${testId}"]`));
     const rects = (testId: string) =>
-      Array.from(document.querySelectorAll(`[data-testid="${testId}"]`)).map((element) =>
-        element.getBoundingClientRect(),
-      );
-    return {
-      assistantBottoms: rects("assistant-message").map((rect) => rect.bottom),
-      pluginRows: rects("plugin-tool-row").map((rect) => ({
+      elements(testId).map((element) => element.getBoundingClientRect());
+    const bounds = (testId: string) =>
+      rects(testId).map((rect) => ({
         top: rect.top,
         bottom: rect.bottom,
-      })),
-      footerTop: rects("turn-footer").at(-1)?.top ?? null,
+      }));
+    const footer = elements("turn-footer").at(-1);
+    return {
+      assistantTops: rects("assistant-message").map((rect) => rect.top),
+      assistantBottoms: rects("assistant-message").map((rect) => rect.bottom),
+      pluginRows: bounds("plugin-tool-row"),
+      nativeToolRows: bounds("tool-call-badge"),
+      footerTop: footer?.getBoundingClientRect().top ?? null,
+      footerMarginTop: footer ? Number.parseFloat(getComputedStyle(footer).marginTop) : null,
     };
   });
 }

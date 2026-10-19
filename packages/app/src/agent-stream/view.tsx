@@ -38,6 +38,7 @@ import {
   TodoListCard,
   CompactionMarker,
   MessageOuterSpacingProvider,
+  useDisableOuterSpacing,
   type InlinePathTarget,
 } from "@/components/message";
 import { PlanCard } from "@/components/plan-card";
@@ -231,6 +232,31 @@ const StreamRow = memo(function StreamRow({
 }) {
   return <>{renderStreamItem(layoutItem)}</>;
 });
+
+function PluginStreamItem({
+  agentId,
+  item,
+  serverId,
+  isLastInToolSequence,
+}: {
+  agentId: string;
+  item: Extract<StreamItem, { kind: "plugin" }>;
+  serverId: string;
+  isLastInToolSequence: boolean;
+}) {
+  const disableOuterSpacing = useDisableOuterSpacing();
+  let rowSpacing: ViewStyle | undefined;
+  if (item.sequence === "tool" && !disableOuterSpacing) {
+    rowSpacing = isLastInToolSequence
+      ? stylesheet.pluginToolSequenceLastSpacing
+      : stylesheet.pluginToolSequenceSpacing;
+  }
+  return (
+    <View style={rowSpacing}>
+      <PluginTimelineItemView agentId={agentId} item={item} serverId={serverId} />
+    </View>
+  );
+}
 
 function renderStreamRow(input: {
   item: StreamItem;
@@ -871,19 +897,15 @@ const AgentStreamViewComponent = forwardRef<AgentStreamViewHandle, AgentStreamVi
               />
             );
 
-          case "plugin": {
-            let rowSpacing: ViewStyle | undefined;
-            if (item.sequence === "tool") {
-              rowSpacing = layoutItem.isLastInToolSequence
-                ? stylesheet.pluginToolSequenceLastSpacing
-                : stylesheet.pluginToolSequenceSpacing;
-            }
+          case "plugin":
             return (
-              <View style={rowSpacing}>
-                <PluginTimelineItemView agentId={agentId} item={item} serverId={resolvedServerId} />
-              </View>
+              <PluginStreamItem
+                agentId={agentId}
+                item={item}
+                serverId={resolvedServerId}
+                isLastInToolSequence={layoutItem.isLastInToolSequence}
+              />
             );
-          }
 
           default:
             return null;
@@ -1675,8 +1697,9 @@ const stylesheet = StyleSheet.create((theme) => ({
     color: theme.colors.foregroundMuted,
     fontSize: theme.fontSize.base,
   },
-  // Native tool rows carry this margin inside their own container. Plugin rows that join the
-  // tool sequence reproduce it here so the host, not the plugin, owns the row rhythm.
+  // Native tool rows skip their outer margin when the stream owns spacing through
+  // MessageOuterSpacingProvider. Plugin rows in the tool sequence mirror that rule; these margins
+  // only apply when outer spacing is enabled.
   pluginToolSequenceSpacing: {
     marginBottom: theme.spacing[1],
   },

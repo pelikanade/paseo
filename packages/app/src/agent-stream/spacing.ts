@@ -11,8 +11,16 @@ export function getAssistantMessageSpacing(params: {
 }
 
 const isUserMessageItem = (item?: StreamItem | null) => item?.kind === "user_message";
-const isToolSequenceItem = (item?: StreamItem | null) =>
-  item?.kind === "tool_call" || item?.kind === "thought" || item?.kind === "todo_list";
+
+/** Tool rows and plugin rows that opt into the tool sequence share gaps and row rhythm. */
+export function isToolSequenceItem(item?: StreamItem | null): boolean {
+  return (
+    item?.kind === "tool_call" ||
+    item?.kind === "thought" ||
+    item?.kind === "todo_list" ||
+    (item?.kind === "plugin" && item.sequence === "tool")
+  );
+}
 
 export function getGapBetweenStreamItems(
   item: StreamItem | null,

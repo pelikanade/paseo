@@ -1500,7 +1500,11 @@ paragraph separators. Paseo invokes transformers before splitting native Markdow
 tools in Overview. A claimed assistant message remains one source item throughout streaming;
 return `undefined` until recognizable if the first text is insufficient to identify it.
 Each replacement may set an optional plugin-local `id`; otherwise Paseo uses its index within that
-source item's output.
+source item's output. Set `sequence: "tool"` when the row belongs in the native tool run
+(`tool_call`, `thought`, `todo_list`). Paseo then applies the native gaps and row rhythm: zero
+between sequence rows, the normal 4px or 16px container margin, and the standard turn-footer
+margin. Rows without the flag keep the generic 16px plugin spacing. Hosts that apply the flag
+advertise `server_info.features.pluginTimelineToolSequence`.
 
 Renderers receive `agentId`, `item`, `timestamp`, `theme`, `host`, and `layout`. Paseo validates
 `item.data` with the registered schema before rendering. Keep transformers synchronous and
@@ -1530,24 +1534,28 @@ async function publishReview(agentId: string, { paseo }: PluginHandlerContext) {
     id: "review",
     kind: "review-result",
     version: 1,
+    sequence: "tool",
     data: { verdict: "ready" },
   });
 }
 ```
 
-| Field     | Type             | Required | Behavior                                                       |
-| --------- | ---------------- | -------- | -------------------------------------------------------------- |
-| `type`    | `"plugin"`       | Yes      | Selects the plugin timeline variant.                           |
-| `id`      | `string`         | Yes      | Stable plugin-local identity. Reusing it replaces the old row. |
-| `kind`    | `string`         | Yes      | Selects the registered renderer.                               |
-| `version` | positive integer | Yes      | Selects the renderer contract version.                         |
-| `data`    | JSON-compatible  | Yes      | Renderer payload, at most 64 KiB after JSON serialization.     |
+| Field      | Type             | Required | Behavior                                                         |
+| ---------- | ---------------- | -------- | ---------------------------------------------------------------- |
+| `type`     | `"plugin"`       | Yes      | Selects the plugin timeline variant.                             |
+| `id`       | `string`         | Yes      | Stable plugin-local identity. Reusing it replaces the old row.   |
+| `kind`     | `string`         | Yes      | Selects the registered renderer.                                 |
+| `version`  | positive integer | Yes      | Selects the renderer contract version.                           |
+| `sequence` | `"tool"`         | No       | Joins the native tool sequence so the row uses tool-row spacing. |
+| `data`     | JSON-compatible  | Yes      | Renderer payload, at most 64 KiB after JSON serialization.       |
 
 The daemon stamps `pluginId` from the calling plugin session and rejects this RPC from non-plugin
 sessions. The row appears live, survives timeline refetches, and keeps only the latest value for the
 same plugin and `id`. If its renderer is missing, Paseo shows the existing unavailable row. Daemons
 reject `data` over the limit rather than truncating it. Daemons that support this operation
-advertise `server_info.features.pluginTimelineItems`.
+advertise `server_info.features.pluginTimelineItems`. Daemons that honor `sequence: "tool"` also
+advertise `server_info.features.pluginTimelineToolSequence`; older daemons ignore the field and
+render the row with generic plugin spacing.
 
 ## Theme and layout
 

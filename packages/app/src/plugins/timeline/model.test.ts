@@ -87,6 +87,61 @@ describe("plugin timeline transforms", () => {
     ]);
   });
 
+  it("preserves an explicit tool sequence", () => {
+    const transformed = transformTimelineItem({
+      item: toolCall,
+      phase: "complete",
+      sourceId: "agent_tool_call-1",
+      plugins: [
+        plugin({
+          id: "intent",
+          transform: () => ({
+            items: [
+              {
+                type: "plugin" as const,
+                kind: "intent",
+                version: 1,
+                sequence: "tool" as const,
+                data: { text: "Reading" },
+              },
+            ],
+          }),
+        }),
+      ],
+    });
+
+    expect(transformed?.[0]?.sequence).toBe("tool");
+  });
+
+  it("rejects an unknown tool sequence", () => {
+    const warning = vi.spyOn(console, "warn").mockImplementation(() => undefined);
+    const transformed = transformTimelineItem({
+      item: toolCall,
+      phase: "complete",
+      sourceId: "agent_tool_call-1",
+      plugins: [
+        plugin({
+          id: "intent",
+          transform: () => ({
+            items: [
+              {
+                type: "plugin" as const,
+                kind: "intent",
+                version: 1,
+                sequence: "assistant" as never,
+                data: {},
+              },
+            ],
+          }),
+        }),
+      ],
+    });
+
+    expect(transformed).toBeUndefined();
+    expect(warning).toHaveBeenCalledOnce();
+    warning.mockRestore();
+  });
+
   it("keeps the source item when no transformer returns a result", () => {
     expect(
       transformTimelineItem({

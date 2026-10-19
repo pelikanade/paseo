@@ -112,6 +112,7 @@ function transformSourceItem(
       version: pluginItem.version,
       data: pluginItem.data,
     };
+    if (pluginItem.sequence) projected.sequence = pluginItem.sequence;
     if (item.timelineCursor) projected.timelineCursor = item.timelineCursor;
     if (item.turnId) projected.turnId = item.turnId;
     return projected;

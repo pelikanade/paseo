@@ -12,6 +12,7 @@ import {
   STATUS_INDICATOR_DOT_SIZE,
 } from "@/utils/status-indicator-geometry";
 import type { Theme } from "@/styles/theme";
+import { GLASS_ENABLED } from "@/styles/theme";
 
 interface StatusIconProps {
   children: ReactNode;
@@ -45,12 +46,17 @@ export function StatusIcon({
     () => [styles.agentIconWrapper, { width: size, height: size }],
     [size],
   );
+  // On Linux the surface behind the dot is the wallpaper through one translucent tint, so the
+  // knockout cannot name it: the dot takes the theme's own hairline instead of an opaque surface
+  // colour, which would ring a translucent row with a solid line.
   const statusDotStyle = useMemo(
     () => [
       styles.statusDot,
       {
         backgroundColor: statusDotColor,
-        borderColor: statusDotBorderColor ?? styles[backdrop].borderColor,
+        borderColor:
+          statusDotBorderColor ??
+          (GLASS_ENABLED ? styles.statusDotGlass.borderColor : styles[backdrop].borderColor),
       },
     ],
     [statusDotColor, statusDotBorderColor, backdrop],
@@ -105,6 +111,10 @@ const styles = StyleSheet.create((theme) => ({
   surfaceSidebar: { borderColor: theme.colors.surfaceSidebar },
   surfaceSidebarHover: { borderColor: theme.colors.surfaceSidebarHover },
   surfaceSidebarSelected: { borderColor: theme.colors.surfaceSidebarSelected },
+  surfaceRowHover: { borderColor: theme.colors.surfaceRowHover },
+  surfaceRowSelected: { borderColor: theme.colors.surfaceRowSelected },
+  surfaceRowPressed: { borderColor: theme.colors.surfaceRowPressed },
+  statusDotGlass: { borderColor: theme.colors.borderGlass },
   statusAlertOverlay: {
     position: "absolute",
     right: STATUS_ALERT_OFFSET,

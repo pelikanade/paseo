@@ -1553,13 +1553,13 @@ const styles = StyleSheet.create((theme) => ({
     gap: theme.spacing[1],
   },
   profilesContainer: {
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCard,
     borderBottomWidth: 1,
-    borderBottomColor: theme.colors.border,
+    borderBottomColor: theme.colors.borderGlass,
   },
   separator: {
     height: 1,
-    backgroundColor: theme.colors.border,
+    backgroundColor: theme.colors.borderGlass,
   },
   sectionHeading: {
     position: "relative",
@@ -1598,16 +1598,16 @@ const styles = StyleSheet.create((theme) => ({
   },
   browserModelRow: isWeb ? {} : { marginBottom: theme.spacing[1] },
   browserRowHovered: {
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   browserRowHoveredElevated: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   browserRowPressed: {
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   browserRowPressedElevated: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   browserRowContent: {
     flex: 1,
@@ -1683,10 +1683,10 @@ const styles = StyleSheet.create((theme) => ({
     transform: [{ scale: 0.7 }],
   },
   rowIconButtonHovered: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   rowIconButtonPressed: {
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   profileActionHidden: {
     opacity: 0,

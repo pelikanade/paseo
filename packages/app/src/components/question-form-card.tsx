@@ -79,11 +79,11 @@ function QuestionOptionRow({
     ({ pressed, hovered }: PressableStateCallbackType & { hovered?: boolean }) => [
       styles.optionItem,
       (Boolean(hovered) || isSelected) && {
-        backgroundColor: theme.colors.surface2,
+        backgroundColor: theme.colors.interactionHighlight,
       },
       pressed && styles.optionItemPressed,
     ],
-    [isSelected, theme.colors.surface2],
+    [isSelected, theme.colors.interactionHighlight],
   );
 
   const optionLabelStyle = useMemo(
@@ -190,14 +190,14 @@ function QuestionNavButton({
         {
           backgroundColor:
             isActive || Boolean(hovered) ? theme.colors.surface2 : theme.colors.surface1,
-          borderColor: isActive ? theme.colors.foregroundMuted : theme.colors.border,
+          borderColor: isActive ? theme.colors.foregroundMuted : theme.colors.borderGlass,
         },
         pressed && styles.optionItemPressed,
       ];
     },
     [
       isActive,
-      theme.colors.border,
+      theme.colors.borderGlass,
       theme.colors.foregroundMuted,
       theme.colors.surface1,
       theme.colors.surface2,
@@ -310,18 +310,18 @@ function QuestionOtherInput({
       [
         styles.otherInput,
         {
-          borderColor: value.length > 0 ? theme.colors.borderAccent : theme.colors.border,
+          borderColor: value.length > 0 ? theme.colors.borderAccent : theme.colors.borderGlass,
           color: theme.colors.foreground,
-          backgroundColor: theme.colors.surface2,
+          backgroundColor: theme.colors.surfaceCard,
         },
         IS_WEB ? { outlineStyle: "none", outlineWidth: 0, outlineColor: "transparent" } : null,
       ] as const,
     [
       value.length,
       theme.colors.borderAccent,
-      theme.colors.border,
+      theme.colors.borderGlass,
       theme.colors.foreground,
-      theme.colors.surface2,
+      theme.colors.surfaceCard,
     ],
   );
   return (
@@ -516,11 +516,11 @@ export function QuestionFormCard({
     () => [
       styles.container,
       {
-        backgroundColor: theme.colors.surface1,
-        borderColor: theme.colors.border,
+        backgroundColor: theme.colors.surfaceCard,
+        borderColor: theme.colors.borderGlass,
       },
     ],
-    [theme.colors.surface1, theme.colors.border],
+    [theme.colors.surfaceCard, theme.colors.borderGlass],
   );
   const questionTextStyle = useMemo(
     () => [styles.questionText, { color: theme.colors.foreground }],

@@ -816,7 +816,7 @@ function removePaneFromSplitTree(node: SplitNode, paneId: string | null): SplitN
   };
 }
 
-const styles = StyleSheet.create((theme) => ({
+const styles = StyleSheet.create(() => ({
   workspaceShell: {
     flex: 1,
     minWidth: 0,
@@ -850,7 +850,7 @@ const styles = StyleSheet.create((theme) => ({
     flex: 1,
     minWidth: 0,
     minHeight: 0,
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: "transparent",
     overflow: "hidden",
   },
   paneTabs: {

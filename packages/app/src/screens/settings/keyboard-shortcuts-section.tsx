@@ -512,7 +512,7 @@ const styles = StyleSheet.create((theme) => ({
     paddingVertical: theme.spacing[3],
   },
   rowCapturing: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   rowLabel: {
     fontSize: theme.fontSize.base,
@@ -539,10 +539,10 @@ const styles = StyleSheet.create((theme) => ({
     justifyContent: "center",
   },
   menuButtonHovered: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   menuButtonPressed: {
-    backgroundColor: theme.colors.surface3,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   capturingText: {
     fontSize: theme.fontSize.base,
@@ -554,7 +554,7 @@ const styles = StyleSheet.create((theme) => ({
   },
   separator: {
     height: 1,
-    backgroundColor: theme.colors.border,
+    backgroundColor: theme.colors.borderGlass,
   },
   mobileCard: {
     padding: theme.spacing[4],

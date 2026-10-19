@@ -123,12 +123,12 @@ const styles = StyleSheet.create((theme) => ({
     pointerEvents: "box-none",
   },
   button: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceMenu,
     opacity: 1,
     pointerEvents: "auto",
   },
   buttonHidden: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceMenu,
     opacity: 0,
     pointerEvents: "none",
   },

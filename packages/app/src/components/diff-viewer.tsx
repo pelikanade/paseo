@@ -236,7 +236,7 @@ const styles = StyleSheet.create((theme) => {
         : null),
     },
     headerLine: {
-      backgroundColor: theme.colors.surface1,
+      backgroundColor: theme.colors.surfaceCard,
     },
     headerText: {
       color: theme.colors.foregroundMuted,
@@ -260,7 +260,7 @@ const styles = StyleSheet.create((theme) => {
       backgroundColor: "rgba(248, 81, 73, 0.35)",
     },
     contextLine: {
-      backgroundColor: theme.colors.surface1,
+      backgroundColor: theme.colors.surfaceCard,
     },
     contextText: {
       color: theme.colors.foregroundMuted,

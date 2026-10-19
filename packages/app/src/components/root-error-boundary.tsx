@@ -102,7 +102,7 @@ export function RootErrorFallback({ error, onReload }: RootErrorFallbackProps) {
 const styles = StyleSheet.create((theme) => ({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: "transparent",
   },
   content: {
     flex: 1,

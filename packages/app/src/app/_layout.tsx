@@ -9,6 +9,7 @@ import { PortalProvider } from "@gorhom/portal";
 import { LucideProvider } from "lucide-react-native";
 import * as Linking from "expo-linking";
 import { Stack, useNavigationContainerRef, usePathname, useRouter } from "expo-router";
+import { DefaultTheme, ThemeProvider } from "@react-navigation/native";
 import {
   createContext,
   type ReactNode,
@@ -883,17 +884,27 @@ function RootProviders({ children }: { children: ReactNode }) {
   );
 }
 
+// React Navigation paints every screen container with its theme background;
+// the default is opaque. The window's glass tint is painted once at the root,
+// so the navigation layer has to stay clear for it to show through.
+const transparentNavigationTheme = {
+  ...DefaultTheme,
+  colors: { ...DefaultTheme.colors, background: "transparent" },
+};
+
 function RootAppTree() {
   return (
     <GestureHandlerRootView style={flexStyle}>
-      <View style={layoutStyles.surfaceFill}>
-        <LucideProvider strokeWidth={ICON_STROKE_WIDTH}>
-          <RootProviders>
-            <RuntimeProviders>
-              <AppShell />
-            </RuntimeProviders>
-          </RootProviders>
-        </LucideProvider>
+      <View style={layoutStyles.windowFill}>
+        <ThemeProvider value={transparentNavigationTheme}>
+          <LucideProvider strokeWidth={ICON_STROKE_WIDTH}>
+            <RootProviders>
+              <RuntimeProviders>
+                <AppShell />
+              </RuntimeProviders>
+            </RootProviders>
+          </LucideProvider>
+        </ThemeProvider>
       </View>
     </GestureHandlerRootView>
   );
@@ -914,9 +925,16 @@ export default function RootLayout() {
 }
 
 const layoutStyles = StyleSheet.create((theme) => ({
+  // The single glass layer of the window. Every structural surface inside the
+  // app is transparent so this tint is the only translucent paint over the
+  // compositor's blurred wallpaper.
+  windowFill: {
+    flex: 1,
+    backgroundColor: theme.colors.surfaceGlass,
+  },
   surfaceFill: {
     flex: 1,
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: "transparent",
   },
   windowSidebarToggle: {
     position: "absolute",

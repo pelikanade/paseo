@@ -84,7 +84,7 @@ const styles = StyleSheet.create((theme: Theme) => ({
     alignItems: "center",
     justifyContent: "center",
     gap: theme.spacing[3],
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCard,
     borderWidth: theme.borderWidth[1],
     borderColor: theme.colors.borderAccent,
     borderRadius: theme.borderRadius["2xl"],

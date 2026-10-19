@@ -54,7 +54,7 @@ const styles = StyleSheet.create((theme) => ({
     paddingVertical: theme.spacing[2],
     borderBottomWidth: 1,
     borderBottomColor: theme.colors.palette.amber[500],
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCard,
   },
   message: {
     flex: 1,

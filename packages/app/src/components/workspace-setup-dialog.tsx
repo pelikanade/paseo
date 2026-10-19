@@ -488,6 +488,6 @@ const styles = StyleSheet.create((theme) => ({
     lineHeight: 20,
   },
   composerInputWrapper: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceCard,
   },
 }));

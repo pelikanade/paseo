@@ -41,13 +41,13 @@ const styles = StyleSheet.create((theme) => ({
     fontWeight: theme.fontWeight.medium,
   },
   input: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceCard,
     borderRadius: theme.borderRadius.lg,
     paddingHorizontal: theme.spacing[4],
     paddingVertical: theme.spacing[3],
     color: theme.colors.foreground,
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
   },
   error: {
     color: theme.colors.destructive,

@@ -32,12 +32,12 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
-      /* Prevent white flash before React mounts */
-      @media (prefers-color-scheme: dark) {
-        html,
-        body {
-          background-color: #181b1a;
-        }
+      /* The desktop window is transparent on Linux, and the app paints its own
+         glass tint; an opaque body here would sit behind that tint and make it
+         fully opaque again. Other platforms paint their own opaque surfaces. */
+      html,
+      body {
+        background-color: transparent;
       }
       /* These styles make the root element full-height */
       #root {
@@ -51,6 +51,13 @@
       }
     </style>
     <style>
+      /* The window compositor blurs the desktop behind the window; popovers
+         float over the app itself, so blur their own backdrop in CSS. */
+      [data-menu-surface="true"] {
+        -webkit-backdrop-filter: blur(20px) saturate(1.1) !important;
+        backdrop-filter: blur(20px) saturate(1.1) !important;
+      }
+
       button,
       a,
       input,

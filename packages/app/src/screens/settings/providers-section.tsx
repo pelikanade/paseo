@@ -511,10 +511,10 @@ const styles = StyleSheet.create((theme) => ({
     minHeight: 56,
   },
   rowHovered: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   rowPressed: {
-    backgroundColor: theme.colors.surface3,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   rowContent: {
     flex: 1,
@@ -571,9 +571,9 @@ const styles = StyleSheet.create((theme) => ({
     height: 32,
   },
   menuButtonHovered: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   menuButtonPressed: {
-    backgroundColor: theme.colors.surface3,
+    backgroundColor: theme.colors.interactionHighlight,
   },
 }));

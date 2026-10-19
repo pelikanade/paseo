@@ -1,5 +1,33 @@
 import { Platform } from "react-native";
 import { darkHighlightColors, lightHighlightColors } from "@getpaseo/highlight";
+import { getDesktopHost } from "@/desktop/host";
+
+// The Linux desktop window is transparent (see packages/desktop/src/main.ts),
+// so the renderer paints exactly one translucent tint over the compositor's
+// blurred wallpaper. Inner surfaces are transparent instead of tinted again:
+// every additional translucent layer would multiply towards opaque.
+// Browsers, mobile, and other desktop platforms keep opaque surfaces, because
+// there is no desktop behind their window.
+export const GLASS_ENABLED = getDesktopHost()?.platform?.toLowerCase() === "linux";
+const GLASS_ALPHA = 0.85;
+
+function withAlpha(hex: string, alpha: number): string {
+  const value = Number.parseInt(hex.slice(1), 16);
+  const red = (value >> 16) & 0xff;
+  const green = (value >> 8) & 0xff;
+  const blue = value & 0xff;
+  return `rgba(${red}, ${green}, ${blue}, ${alpha})`;
+}
+
+/**
+ * Popovers float over the app, not over the desktop, so the compositor's blur
+ * cannot help them read. Blur their own backdrop on the web renderer, where
+ * `backdrop-filter` is available; native keeps the translucent fill alone.
+ */
+export const glassBackdropFilter =
+  Platform.OS === "web"
+    ? ({ backdropFilter: "blur(20px)", WebkitBackdropFilter: "blur(20px)" } as const)
+    : {};
 
 export const baseColors = {
   // Base colors
@@ -270,6 +298,16 @@ export function buildLightSemanticColors(tint: LightThemeConfig) {
     surfaceSidebarHover: tint.surface3,
     surfaceSidebarSelected: tint.surface4,
     surfaceWorkspace: tint.surface0,
+    surfaceGlass: tint.surface0,
+    // Tinted glass for cards and row states: enough base colour to read as a
+    // surface, little enough alpha that the blurred desktop still shows
+    // through, like the transcript's notification bar.
+    surfaceCard: "rgba(0, 0, 0, 0.035)",
+    surfaceRowHover: "rgba(0, 0, 0, 0.035)",
+    surfaceRowSelected: "rgba(0, 0, 0, 0.06)",
+    surfaceRowPressed: "rgba(0, 0, 0, 0.09)",
+    surfaceCode: "rgba(0, 0, 0, 0.045)",
+    surfaceMenu: "rgba(255, 255, 255, 0.9)",
     interactionHighlight: "rgba(0, 0, 0, 0.06)",
 
     foreground: tint.foreground,
@@ -277,6 +315,7 @@ export function buildLightSemanticColors(tint: LightThemeConfig) {
     foregroundExtraMuted: tint.foregroundExtraMuted,
 
     border: tint.border,
+    borderGlass: "rgba(0, 0, 0, 0.08)",
     borderAccent: tint.borderAccent,
 
     accent: tint.accent,
@@ -397,10 +436,22 @@ export function buildDarkSemanticColors(tint: DarkThemeConfig) {
     surface3: tint.surface3,
     surface4: tint.surface4,
     surfaceDiffEmpty: tint.surfaceDiffEmpty,
-    surfaceSidebar: tint.surfaceSidebar,
+    surfaceSidebar: GLASS_ENABLED ? "transparent" : tint.surfaceSidebar,
     surfaceSidebarHover: tint.surface1,
     surfaceSidebarSelected: tint.surface2,
-    surfaceWorkspace: tint.surface1,
+    surfaceWorkspace: GLASS_ENABLED ? "transparent" : tint.surface1,
+    surfaceGlass: GLASS_ENABLED ? withAlpha(tint.surface0, GLASS_ALPHA) : tint.surface0,
+    // Tinted glass for cards and row states: enough base colour to read as a
+    // surface, little enough alpha that the blurred desktop still shows
+    // through, like the transcript's notification bar.
+    surfaceCard: GLASS_ENABLED ? "rgba(255, 255, 255, 0.06)" : tint.surface1,
+    surfaceRowHover: GLASS_ENABLED ? "rgba(255, 255, 255, 0.04)" : tint.surface1,
+    surfaceRowSelected: GLASS_ENABLED ? "rgba(255, 255, 255, 0.07)" : tint.surface2,
+    surfaceRowPressed: GLASS_ENABLED ? "rgba(255, 255, 255, 0.09)" : tint.surface2,
+    surfaceCode: GLASS_ENABLED ? "rgba(255, 255, 255, 0.07)" : tint.surface2,
+    // Popovers: a darker base than cards because the content behind them is
+    // sharp app UI, not wallpaper; the web renderer blurs that backdrop.
+    surfaceMenu: GLASS_ENABLED ? withAlpha(tint.surface1, 0.55) : tint.surface1,
     interactionHighlight: "rgba(255, 255, 255, 0.08)",
 
     foreground,
@@ -408,6 +459,7 @@ export function buildDarkSemanticColors(tint: DarkThemeConfig) {
     foregroundExtraMuted: tint.foregroundExtraMuted,
 
     border: tint.border,
+    borderGlass: GLASS_ENABLED ? "rgba(255, 255, 255, 0.06)" : tint.border,
     borderAccent: tint.borderAccent,
 
     accent: tint.accent,

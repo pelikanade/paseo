@@ -2534,7 +2534,7 @@ const animatedStaticStyles = RNStyleSheet.create({
 const styles = StyleSheet.create((theme: Theme) => ({
   borderSeparator: {
     height: theme.borderWidth[1],
-    backgroundColor: theme.colors.border,
+    backgroundColor: theme.colors.borderGlass,
   },
   inputAreaContainer: {
     flexShrink: 1,
@@ -2610,7 +2610,7 @@ const styles = StyleSheet.create((theme: Theme) => ({
     borderColor: theme.colors.palette.green[800],
   },
   iconButtonHovered: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   attachmentTray: {
     flexDirection: "row",
@@ -2639,10 +2639,10 @@ const styles = StyleSheet.create((theme: Theme) => ({
     justifyContent: "space-between",
     paddingHorizontal: theme.spacing[3],
     paddingVertical: theme.spacing[2],
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCard,
     borderRadius: theme.borderRadius.lg,
     borderWidth: theme.borderWidth[1],
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     gap: theme.spacing[2],
   },
   queueText: {
@@ -2661,7 +2661,7 @@ const styles = StyleSheet.create((theme: Theme) => ({
     borderRadius: theme.borderRadius.full,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceCard,
   },
   queueSendButton: {
     backgroundColor: theme.colors.accent,

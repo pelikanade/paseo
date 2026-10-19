@@ -21,7 +21,7 @@ import type { Theme } from "@/styles/theme";
 import { normalizeWorkspaceOpaqueId } from "@/utils/workspace-identity";
 import { usePluginHostNavigation } from "../host-navigation";
 import { createPluginClientStateSource } from "../client-state/source";
-import { toPluginTheme } from "../theme";
+import { toPluginGlassTheme } from "../theme";
 import { pluginIconComponent } from "../icons";
 import { useInstalledPlugin } from "../registry";
 import { PluginInstallationProvider } from "../installation-provider";
@@ -30,7 +30,7 @@ import { resolvePluginWorkspacePanel } from "./resolution";
 import { resolvePluginPlatform } from "../platform";
 
 const pluginThemeMapping = (theme: Theme) => ({
-  theme: toPluginTheme(theme),
+  theme: toPluginGlassTheme(theme),
 });
 
 function PluginPanelBody({ theme }: { theme: PluginTheme }) {

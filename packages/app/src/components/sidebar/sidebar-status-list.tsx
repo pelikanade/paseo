@@ -29,7 +29,6 @@ import { isWeb as platformIsWeb, isNative as platformIsNative } from "@/constant
 import { useIsCompactFormFactor } from "@/constants/layout";
 import { StyleSheet } from "react-native-unistyles";
 import { density, densityIconBox, densityIconProps } from "@/styles/density";
-import type { SidebarSurfaceBackdrop } from "@/styles/surface-backdrop";
 import { withUnistyles } from "react-native-unistyles";
 import {
   ChevronDown,
@@ -841,7 +840,6 @@ function StatusWorkspaceRowInnerContent({
         const {
           trailingPresentation,
           showKebab: showKebabInSlot,
-          showScrim,
           renderSlot,
           reserveSlotWidth,
         } = resolveTrailingActionVisibility({
@@ -916,11 +914,9 @@ function StatusWorkspaceRowInnerContent({
                 {renderSlot ? (
                   <StatusWorkspaceActionSlot
                     workspace={workspace}
-                    backdrop={backdrop}
                     trailing={trailing}
                     trailingPresentation={trailingPresentation}
                     showKebab={showKebabInSlot}
-                    showScrim={showScrim}
                     reserveSlotWidth={reserveSlotWidth}
                     isPinned={isPinned}
                     onTogglePin={onTogglePin}
@@ -947,11 +943,9 @@ function StatusWorkspaceRowInnerContent({
 
 function StatusWorkspaceActionSlot({
   workspace,
-  backdrop,
   trailing,
   trailingPresentation,
   showKebab,
-  showScrim,
   reserveSlotWidth,
   isPinned,
   onTogglePin,
@@ -967,11 +961,9 @@ function StatusWorkspaceActionSlot({
   archiveShortcutKeys,
 }: {
   workspace: SidebarWorkspaceEntry;
-  backdrop: SidebarSurfaceBackdrop;
   trailing: SidebarWorkspaceTrailing;
   trailingPresentation: SidebarWorkspaceTrailingPresentation;
   showKebab: boolean;
-  showScrim: boolean;
   reserveSlotWidth: boolean;
   isPinned?: boolean;
   onTogglePin?: () => void;
@@ -992,10 +984,7 @@ function StatusWorkspaceActionSlot({
       <SidebarWorkspaceTrailingActionBase presentation={trailingPresentation}>
         <SidebarWorkspaceTrailingContent workspace={workspace} trailing={trailing} />
       </SidebarWorkspaceTrailingActionBase>
-      <SidebarWorkspaceTrailingActionOverlay
-        visible={kebab.showKebab}
-        scrimBackdrop={showScrim ? backdrop : undefined}
-      >
+      <SidebarWorkspaceTrailingActionOverlay visible={kebab.showKebab}>
         {kebab.showKebab && onArchive ? (
           <SidebarWorkspaceMenu
             {...kebab.menuProps}
@@ -1079,10 +1068,10 @@ const styles = StyleSheet.create((theme) => ({
     userSelect: "none",
   },
   statusGroupRowHovered: {
-    backgroundColor: theme.colors.surfaceSidebarHover,
+    backgroundColor: theme.colors.surfaceRowHover,
   },
   statusGroupRowPressed: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceRowPressed,
   },
   statusGroupRowLeft: {
     flexDirection: "row",
@@ -1130,20 +1119,20 @@ const styles = StyleSheet.create((theme) => ({
     userSelect: "none",
   },
   workspaceRowHovered: {
-    backgroundColor: theme.colors.surfaceSidebarHover,
+    backgroundColor: theme.colors.surfaceRowHover,
   },
   workspaceRowPressed: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceRowPressed,
   },
   workspaceRowDragging: {
     backgroundColor: theme.colors.surface2,
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     transform: [{ scale: 1.02 }],
     zIndex: 3,
     ...theme.shadow.md,
   },
   sidebarRowSelected: {
-    backgroundColor: theme.colors.surfaceSidebarSelected,
+    backgroundColor: theme.colors.surfaceRowSelected,
   },
 }));

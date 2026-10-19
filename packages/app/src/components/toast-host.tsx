@@ -11,7 +11,7 @@ import {
 import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { StyleSheet, withUnistyles } from "react-native-unistyles";
-import type { Theme } from "@/styles/theme";
+import { glassBackdropFilter, type Theme } from "@/styles/theme";
 import { useTranslation } from "react-i18next";
 import { useIsCompactFormFactor } from "@/constants/layout";
 import { isWeb } from "@/constants/platform";
@@ -294,12 +294,13 @@ const styles = StyleSheet.create((theme) => ({
     flexDirection: "row",
     alignItems: "center",
     gap: theme.spacing[2],
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: theme.colors.surfaceMenu,
     borderRadius: theme.borderRadius["2xl"],
     borderWidth: theme.borderWidth[1],
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     paddingVertical: theme.spacing[2],
     paddingHorizontal: theme.spacing[3],
+    ...glassBackdropFilter,
     ...theme.shadow.md,
   },
   toastInfo: {

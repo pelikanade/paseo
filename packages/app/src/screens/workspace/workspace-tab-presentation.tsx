@@ -243,7 +243,7 @@ const styles = StyleSheet.create((theme) => ({
     paddingVertical: theme.spacing[2],
   },
   optionRowActive: {
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceRowSelected,
   },
   optionLeadingSlot: {
     width: 16,

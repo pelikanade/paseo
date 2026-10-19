@@ -1263,7 +1263,7 @@ const styles = StyleSheet.create((theme) => ({
   },
   divider: {
     height: 1,
-    backgroundColor: theme.colors.border,
+    backgroundColor: theme.colors.borderGlass,
   },
   toolbar: {
     flexDirection: "row",
@@ -1321,7 +1321,7 @@ const styles = StyleSheet.create((theme) => ({
     marginHorizontal: theme.spacing[3],
     marginBottom: theme.spacing[3],
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     borderRadius: theme.borderRadius.lg,
     backgroundColor: theme.colors.surfaceSidebar,
     overflow: "hidden",
@@ -1383,7 +1383,7 @@ const styles = StyleSheet.create((theme) => ({
     borderRadius: 4,
   },
   kebabButtonHovered: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   cardBody: {
     paddingHorizontal: theme.spacing[3],
@@ -1404,7 +1404,7 @@ const styles = StyleSheet.create((theme) => ({
     marginHorizontal: theme.spacing[3],
     marginBottom: theme.spacing[2],
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     borderRadius: theme.borderRadius.md,
     overflow: "hidden",
   },
@@ -1415,7 +1415,7 @@ const styles = StyleSheet.create((theme) => ({
     paddingHorizontal: theme.spacing[3],
     paddingVertical: theme.spacing[2],
     minHeight: 36,
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCard,
   },
   threadPath: {
     fontSize: theme.fontSize.sm,
@@ -1430,7 +1430,7 @@ const styles = StyleSheet.create((theme) => ({
   },
   threadComment: {
     borderTopWidth: 1,
-    borderTopColor: theme.colors.border,
+    borderTopColor: theme.colors.borderGlass,
     paddingBottom: theme.spacing[2],
   },
   threadCommentHeader: {
@@ -1452,9 +1452,9 @@ const styles = StyleSheet.create((theme) => ({
   },
   replyCard: {
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     borderRadius: theme.borderRadius.md,
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCard,
     marginBottom: theme.spacing[2],
     overflow: "hidden",
   },

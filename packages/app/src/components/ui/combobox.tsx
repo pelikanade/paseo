@@ -27,6 +27,7 @@ import { useTranslation } from "react-i18next";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import type { EditingTextInputHandle } from "@/components/ui/text-input";
 import { StyleSheet, useUnistyles } from "react-native-unistyles";
+import { glassBackdropFilter } from "@/styles/theme";
 import { useIsCompactFormFactor } from "@/constants/layout";
 import { useRetainedPanelActive } from "@/components/retained-panel";
 import { BottomSheetScrollView, type BottomSheetBackgroundProps } from "@gorhom/bottom-sheet";
@@ -165,12 +166,12 @@ function ComboboxSheetBackground({ style }: BottomSheetBackgroundProps) {
     () => [
       style,
       {
-        backgroundColor: theme.colors.surface0,
+        backgroundColor: theme.colors.surfaceMenu,
         borderTopLeftRadius: theme.borderRadius["2xl"],
         borderTopRightRadius: theme.borderRadius["2xl"],
       },
     ],
-    [style, theme.colors.surface0, theme.borderRadius],
+    [style, theme.colors.surfaceMenu, theme.borderRadius],
   );
 
   return <Animated.View pointerEvents="none" style={combinedStyle} />;
@@ -1667,9 +1668,9 @@ const styles = StyleSheet.create((theme) => ({
     alignItems: "center",
     paddingHorizontal: theme.spacing[3],
     gap: theme.spacing[2],
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCard,
     borderBottomWidth: 1,
-    borderBottomColor: theme.colors.border,
+    borderBottomColor: theme.colors.borderGlass,
     ...(IS_WEB ? {} : { marginHorizontal: theme.spacing[1] }),
   },
   searchInput: {
@@ -1694,19 +1695,19 @@ const styles = StyleSheet.create((theme) => ({
         }),
   },
   comboboxItemHovered: {
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   comboboxItemHoveredElevated: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   comboboxItemPressed: {
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   comboboxItemPressedElevated: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   comboboxItemActive: {
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceRowSelected,
   },
   comboboxItemDisabled: {
     opacity: 0.55,
@@ -1754,7 +1755,7 @@ const styles = StyleSheet.create((theme) => ({
   },
   footer: {
     borderTopWidth: 1,
-    borderTopColor: theme.colors.border,
+    borderTopColor: theme.colors.borderGlass,
   },
   bottomSheetHeader: {
     paddingHorizontal: theme.spacing[6],
@@ -1785,10 +1786,11 @@ const styles = StyleSheet.create((theme) => ({
     left: 0,
   },
   desktopContainer: {
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: theme.colors.surfaceMenu,
     borderRadius: theme.borderRadius.lg,
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
+    ...glassBackdropFilter,
     ...theme.shadow.md,
     maxHeight: 400,
     overflow: "hidden",

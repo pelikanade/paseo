@@ -385,10 +385,10 @@ const styles = StyleSheet.create((theme) => ({
     backgroundColor: "transparent",
   },
   triggerHovered: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   triggerPressed: {
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   triggerDisabled: {
     opacity: 0.5,
@@ -437,7 +437,7 @@ const styles = StyleSheet.create((theme) => ({
   modelViewportDivider: {
     height: 1,
     flexShrink: 0,
-    backgroundColor: theme.colors.border,
+    backgroundColor: theme.colors.borderGlass,
   },
   controlsScroll: {
     flex: 1,
@@ -446,7 +446,7 @@ const styles = StyleSheet.create((theme) => ({
   mobileRootContent: {
     backgroundColor: theme.colors.surfaceSidebar,
     borderTopWidth: 1,
-    borderTopColor: theme.colors.border,
+    borderTopColor: theme.colors.borderGlass,
   },
   controlsContent: {
     paddingHorizontal: theme.spacing[2],

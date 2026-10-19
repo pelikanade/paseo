@@ -1609,7 +1609,7 @@ function PermissionRequestCard({
 const stylesheet = StyleSheet.create((theme) => ({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: "transparent",
   },
   contentWrapper: {
     width: "100%",
@@ -1680,7 +1680,7 @@ const stylesheet = StyleSheet.create((theme) => ({
     width: 48,
     height: 48,
     borderRadius: 24,
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceMenu,
     alignItems: "center",
     justifyContent: "center",
     ...theme.shadow.sm,
@@ -1697,8 +1697,8 @@ const permissionStyles = StyleSheet.create((theme) => ({
     borderRadius: theme.spacing[2],
     borderWidth: 1,
     gap: theme.spacing[2],
-    backgroundColor: theme.colors.surface1,
-    borderColor: theme.colors.border,
+    backgroundColor: theme.colors.surfaceCard,
+    borderColor: theme.colors.borderGlass,
   },
   title: {
     fontSize: theme.fontSize.base,
@@ -1738,11 +1738,11 @@ const permissionStyles = StyleSheet.create((theme) => ({
     borderRadius: theme.borderRadius.md,
     alignItems: "center",
     borderWidth: theme.borderWidth[1],
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCard,
     borderColor: theme.colors.borderAccent,
   },
   optionButtonHovered: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   optionButtonPressed: {
     opacity: 0.9,

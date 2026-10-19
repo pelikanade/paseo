@@ -106,14 +106,14 @@ const styles = StyleSheet.create((theme) => ({
     height: 34,
     borderRadius: theme.borderRadius.md,
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: theme.spacing[1],
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCard,
   },
   keyButtonHovered: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceRowHover,
   },
   keyButtonDisabled: {
     opacity: 0.45,

@@ -5,12 +5,12 @@ export type WorkspaceTabRailSurface = "surface" | "sidebar";
 
 /**
  * The fill of a tab chip, named as the surface token it paints so the chip style and everything
- * knocking out of it (the running-status ring, the trailing-action scrim) agree.
+ * knocking out of it (the running-status ring) agree.
  *
- * Each rail climbs its own ladder: resting, filled (hovered, or active in an unfocused pane),
- * selected. The sidebar rail uses the sidebar hover/selected tokens rather than the plain surface
- * steps because light themes paint `surfaceSidebar` with `surface2`, so a `surface2` chip vanishes
- * on it.
+ * Either rail fills a chip with the translucent row token rather than climbing its own ladder of
+ * opaque surface steps: the rails are transparent on Linux, and an opaque tile inside a clear rail
+ * reads as a block of the wrong colour. The resting token is the rail's own surface, because a chip
+ * with no fill still has to name what is behind it.
  */
 export function resolveWorkspaceTabChipBackdrop({
   rail,
@@ -21,10 +21,6 @@ export function resolveWorkspaceTabChipBackdrop({
   isActiveFocused: boolean;
   isFilled: boolean;
 }): SurfaceBackdrop {
-  if (rail === "sidebar") {
-    if (isActiveFocused) return "surfaceSidebarSelected";
-    return isFilled ? "surfaceSidebarHover" : "surfaceSidebar";
-  }
-  if (isActiveFocused) return "surface2";
-  return isFilled ? "surface1" : "surface0";
+  if (isActiveFocused || isFilled) return "surfaceRowHover";
+  return rail === "sidebar" ? "surfaceSidebar" : "surface0";
 }

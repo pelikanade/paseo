@@ -10,6 +10,9 @@
  * A token name rather than a colour because theme colours are only legible inside
  * `StyleSheet.create` — see docs/unistyles.md. Each knockout maps the name to a style of its own.
  * Add a token here when a knockout lands on a surface that isn't listed.
+ *
+ * On Linux the glass theme paints row states with the translucent `surfaceRow*` tokens instead
+ * of the opaque sidebar steps, so a knockout on a row names one of those.
  */
 export type SurfaceBackdrop =
   | "surface0"
@@ -17,9 +20,18 @@ export type SurfaceBackdrop =
   | "surface2"
   | "surfaceSidebar"
   | "surfaceSidebarHover"
-  | "surfaceSidebarSelected";
+  | "surfaceSidebarSelected"
+  | "surfaceRowHover"
+  | "surfaceRowSelected"
+  | "surfaceRowPressed";
 
 export type SidebarSurfaceBackdrop = Extract<
   SurfaceBackdrop,
-  "surfaceSidebar" | "surfaceSidebarHover" | "surfaceSidebarSelected" | "surface2"
+  | "surfaceSidebar"
+  | "surfaceSidebarHover"
+  | "surfaceSidebarSelected"
+  | "surfaceRowHover"
+  | "surfaceRowSelected"
+  | "surfaceRowPressed"
+  | "surface2"
 >;

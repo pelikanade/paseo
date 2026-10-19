@@ -214,6 +214,12 @@ function getStatusBadgeBackdropStyle(backdrop: SidebarSurfaceBackdrop): ViewStyl
       return styles.statusBadgeOnSidebarHover;
     case "surfaceSidebarSelected":
       return styles.statusBadgeOnSidebarSelected;
+    case "surfaceRowHover":
+      return styles.statusBadgeOnRowHover;
+    case "surfaceRowSelected":
+      return styles.statusBadgeOnRowSelected;
+    case "surfaceRowPressed":
+      return styles.statusBadgeOnRowPressed;
     case "surface2":
       return styles.statusBadgeOnSurface2;
   }
@@ -317,6 +323,9 @@ const styles = StyleSheet.create((theme) => {
     statusBadgeOnSidebar: { backgroundColor: theme.colors.surfaceSidebar },
     statusBadgeOnSidebarHover: { backgroundColor: theme.colors.surfaceSidebarHover },
     statusBadgeOnSidebarSelected: { backgroundColor: theme.colors.surfaceSidebarSelected },
+    statusBadgeOnRowHover: { backgroundColor: theme.colors.surfaceRowHover },
+    statusBadgeOnRowSelected: { backgroundColor: theme.colors.surfaceRowSelected },
+    statusBadgeOnRowPressed: { backgroundColor: theme.colors.surfaceRowPressed },
     statusBadgeOnSurface2: { backgroundColor: theme.colors.surface2 },
     statusDotRunning: statusDot("running"),
     statusDotFailed: statusDot("failed"),

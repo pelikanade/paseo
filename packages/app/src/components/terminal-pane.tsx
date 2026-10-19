@@ -1323,7 +1323,7 @@ const styles = StyleSheet.create((theme) => ({
     paddingHorizontal: theme.spacing[3],
     paddingVertical: theme.spacing[1],
     borderTopWidth: 1,
-    borderTopColor: theme.colors.border,
+    borderTopColor: theme.colors.borderGlass,
     backgroundColor: theme.colors.surface1,
   },
   statusError: {
@@ -1332,7 +1332,7 @@ const styles = StyleSheet.create((theme) => ({
   },
   keyboardContainer: {
     borderTopWidth: 1,
-    borderTopColor: theme.colors.border,
+    borderTopColor: theme.colors.borderGlass,
     backgroundColor: theme.colors.surface0,
     paddingHorizontal: theme.spacing[2],
     paddingVertical: theme.spacing[2],
@@ -1354,7 +1354,7 @@ const styles = StyleSheet.create((theme) => ({
     height: 34,
     borderRadius: theme.borderRadius.md,
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: theme.spacing[1],

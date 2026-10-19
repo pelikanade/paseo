@@ -109,7 +109,7 @@ const styles = StyleSheet.create((theme) => ({
   },
   rows: {
     borderWidth: theme.borderWidth[1],
-    borderColor: theme.colors.surface2,
+    borderColor: theme.colors.borderGlass,
     borderRadius: theme.borderRadius.lg,
     overflow: "hidden",
   },
@@ -121,7 +121,7 @@ const styles = StyleSheet.create((theme) => ({
     paddingHorizontal: theme.spacing[4],
     paddingVertical: theme.spacing[3],
     borderBottomWidth: theme.borderWidth[1],
-    borderBottomColor: theme.colors.surface2,
+    borderBottomColor: theme.colors.borderGlass,
   },
   rowText: {
     flex: 1,

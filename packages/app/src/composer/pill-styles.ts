@@ -36,10 +36,10 @@ export const composerPillStyles = StyleSheet.create((theme) => ({
     borderRadius: theme.borderRadius["2xl"],
     borderWidth: theme.borderWidth[1],
     borderColor: theme.colors.borderAccent,
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCard,
   },
   bodyActive: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceRowSelected,
   },
   label: {
     fontSize: theme.fontSize.sm,

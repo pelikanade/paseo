@@ -227,7 +227,7 @@ function SessionsScreenContent() {
 const styles = StyleSheet.create((theme) => ({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: "transparent",
   },
   filterContainer: {
     flexDirection: "row",
@@ -272,7 +272,7 @@ const styles = StyleSheet.create((theme) => ({
   },
   errorsBanner: {
     borderWidth: theme.borderWidth[1],
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     borderRadius: theme.borderRadius.lg,
     padding: theme.spacing[3],
     gap: theme.spacing[1],

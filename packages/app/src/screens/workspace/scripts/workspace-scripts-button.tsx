@@ -550,7 +550,7 @@ const styles = StyleSheet.create((theme) => ({
     justifyContent: "center",
   },
   splitButtonPrimaryHovered: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   splitButtonText: {
     fontSize: theme.fontSize.base,

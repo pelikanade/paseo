@@ -185,14 +185,14 @@ const styles = StyleSheet.create((theme) => ({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: "transparent",
     paddingHorizontal: theme.spacing[8],
     paddingVertical: theme.spacing[8],
   },
   errorScreen: {
     position: "relative",
     flex: 1,
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: "transparent",
   },
   errorScrollView: {
     flex: 1,
@@ -245,9 +245,9 @@ const styles = StyleSheet.create((theme) => ({
   logsContainer: {
     height: 200,
     borderRadius: theme.borderRadius.xl,
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCode,
     borderWidth: theme.borderWidth[1],
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     overflow: "hidden",
   },
   logsScroll: {

@@ -38,7 +38,7 @@ const sourceAppearance = (theme: Theme) => ({
     foreground: theme.colors.foreground,
     cursor: theme.colors.terminal.cursor,
     foregroundMuted: theme.colors.foregroundMuted,
-    border: theme.colors.border,
+    border: theme.colors.borderGlass,
     selection: theme.colors.terminal.selectionBackground,
     monoFont: theme.fontFamily.mono,
     codeFontSize: theme.fontSize.code,

@@ -32,7 +32,6 @@ import {
 import { StyleSheet, withUnistyles } from "react-native-unistyles";
 import { density, densityIconBox } from "@/styles/density";
 import type { Theme } from "@/styles/theme";
-import type { SidebarSurfaceBackdrop } from "@/styles/surface-backdrop";
 import { getSidebarRowBackdrop } from "@/components/sidebar/sidebar-row-backdrop";
 import { type GestureType } from "react-native-gesture-handler";
 import { WorkspaceRenameModal } from "@/components/workspace-rename-modal";
@@ -601,7 +600,6 @@ function ProjectMenuItems({
 
 function WorkspaceRowRightGroup({
   workspace,
-  backdrop,
   isHovered,
   isTouchPlatform,
   isCreating,
@@ -621,7 +619,6 @@ function WorkspaceRowRightGroup({
   onTogglePin,
 }: {
   workspace: SidebarWorkspaceEntry;
-  backdrop: SidebarSurfaceBackdrop;
   isHovered: boolean;
   isTouchPlatform: boolean;
   isCreating: boolean;
@@ -647,7 +644,6 @@ function WorkspaceRowRightGroup({
   const {
     trailingPresentation,
     showKebab: showKebabInSlot,
-    showScrim,
     renderSlot,
     reserveSlotWidth,
   } = resolveTrailingActionVisibility({
@@ -670,10 +666,7 @@ function WorkspaceRowRightGroup({
           <SidebarWorkspaceTrailingActionBase presentation={trailingPresentation}>
             <SidebarWorkspaceTrailingContent workspace={workspace} trailing={trailing} />
           </SidebarWorkspaceTrailingActionBase>
-          <SidebarWorkspaceTrailingActionOverlay
-            visible={kebab.showKebab}
-            scrimBackdrop={showScrim ? backdrop : undefined}
-          >
+          <SidebarWorkspaceTrailingActionOverlay visible={kebab.showKebab}>
             {onArchive ? (
               <SidebarWorkspaceMenu
                 {...kebab.menuProps}
@@ -1180,7 +1173,6 @@ function WorkspaceRowInner({
               >
                 <WorkspaceRowRightGroup
                   workspace={workspace}
-                  backdrop={backdrop}
                   isHovered={isHovered}
                   isTouchPlatform={isTouchPlatform}
                   isCreating={isCreating}
@@ -2594,10 +2586,10 @@ const styles = StyleSheet.create((theme) => ({
     userSelect: "none",
   },
   newWorkspaceGhostRowHovered: {
-    backgroundColor: theme.colors.surfaceSidebarHover,
+    backgroundColor: theme.colors.surfaceRowHover,
   },
   newWorkspaceGhostRowPressed: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceRowPressed,
   },
   // The width of a workspace row's status slot, so the label lands on the same rail as the
   // titles above it.
@@ -2634,15 +2626,15 @@ const styles = StyleSheet.create((theme) => ({
     userSelect: "none",
   },
   projectRowHovered: {
-    backgroundColor: theme.colors.surfaceSidebarHover,
+    backgroundColor: theme.colors.surfaceRowHover,
   },
   projectRowPressed: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceRowPressed,
   },
   projectRowDragging: {
     backgroundColor: theme.colors.surface2,
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     transform: [{ scale: 1.02 }],
     zIndex: 3,
     ...theme.shadow.md,
@@ -2678,7 +2670,7 @@ const styles = StyleSheet.create((theme) => ({
     flexShrink: 0,
   },
   projectActionButtonHovered: {
-    backgroundColor: theme.colors.surfaceSidebarHover,
+    backgroundColor: theme.colors.surfaceRowHover,
   },
   projectActionButtonText: {
     color: theme.colors.foregroundMuted,
@@ -2693,7 +2685,7 @@ const styles = StyleSheet.create((theme) => ({
     flexShrink: 0,
   },
   projectIconActionButtonHovered: {
-    backgroundColor: theme.colors.surfaceSidebarHover,
+    backgroundColor: theme.colors.surfaceRowHover,
   },
   projectIconActionButtonHidden: {
     opacity: 0,
@@ -2777,21 +2769,21 @@ const styles = StyleSheet.create((theme) => ({
     flexShrink: 0,
   },
   workspaceRowHovered: {
-    backgroundColor: theme.colors.surfaceSidebarHover,
+    backgroundColor: theme.colors.surfaceRowHover,
   },
   workspaceRowPressed: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceRowPressed,
   },
   workspaceRowDragging: {
     backgroundColor: theme.colors.surface2,
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     transform: [{ scale: 1.02 }],
     zIndex: 3,
     ...theme.shadow.md,
   },
   sidebarRowSelected: {
-    backgroundColor: theme.colors.surfaceSidebarSelected,
+    backgroundColor: theme.colors.surfaceRowSelected,
   },
   workspaceRowContainer: {
     position: "relative",

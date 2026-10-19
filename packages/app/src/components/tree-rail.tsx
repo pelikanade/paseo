@@ -126,6 +126,6 @@ const styles = StyleSheet.create((theme) => ({
     position: "relative",
     flexShrink: 0,
     borderLeftWidth: 1,
-    borderLeftColor: theme.colors.border,
+    borderLeftColor: theme.colors.borderGlass,
   },
 }));

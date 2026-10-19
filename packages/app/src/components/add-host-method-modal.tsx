@@ -22,9 +22,9 @@ const styles = StyleSheet.create((theme) => ({
     gap: theme.spacing[4],
     padding: theme.spacing[4],
     borderRadius: theme.borderRadius.xl,
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceCard,
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
   },
   optionText: {
     color: theme.colors.foreground,

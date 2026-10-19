@@ -810,7 +810,7 @@ function renderWorkspaceScreenGateShell(input: {
 
   return (
     <WorkspaceFocusProvider workspaceKey={input.workspaceKey}>
-      <View style={styles.container}>
+      <View style={[styles.container, styles.containerWorkspaceBackground]}>
         <View style={styles.threePaneRow}>
           <View style={styles.centerColumn}>
             <WorkspaceScreenGateFrame>{input.gate}</WorkspaceScreenGateFrame>
@@ -3865,13 +3865,13 @@ const styles = StyleSheet.create((theme) => ({
     height: 30,
     borderRadius: theme.borderRadius.md,
     borderWidth: theme.borderWidth[1],
-    borderColor: theme.colors.border,
-    backgroundColor: theme.colors.surface1,
+    borderColor: theme.colors.borderGlass,
+    backgroundColor: theme.colors.surfaceCard,
     alignItems: "center",
     justifyContent: "center",
   },
   newTabActionButtonHovered: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceRowHover,
   },
   newTabTooltipText: {
     fontSize: theme.fontSize.base,
@@ -3889,8 +3889,8 @@ const styles = StyleSheet.create((theme) => ({
   },
   tabsContainer: {
     borderBottomWidth: 1,
-    borderBottomColor: theme.colors.border,
-    backgroundColor: theme.colors.surface0,
+    borderBottomColor: theme.colors.borderGlass,
+    backgroundColor: "transparent",
     flexDirection: "row",
     alignItems: "center",
   },
@@ -3936,10 +3936,10 @@ const styles = StyleSheet.create((theme) => ({
     flexShrink: 0,
   },
   tabActive: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceRowHover,
   },
   tabHovered: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceRowHover,
   },
   tabLabel: {
     flexShrink: 1,
@@ -3969,12 +3969,12 @@ const styles = StyleSheet.create((theme) => ({
     opacity: 0,
   },
   tabCloseButtonActive: {
-    backgroundColor: theme.colors.surface3,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   content: {
     flex: 1,
     minHeight: 0,
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: "transparent",
     position: "relative",
   },
   mobileMountedTabSlot: {
@@ -3983,7 +3983,7 @@ const styles = StyleSheet.create((theme) => ({
   contentPlaceholder: {
     flex: 1,
     minHeight: 0,
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: "transparent",
   },
   emptyState: {
     flex: 1,

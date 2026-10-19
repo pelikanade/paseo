@@ -281,7 +281,7 @@ const styles = StyleSheet.create((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     borderWidth: theme.borderWidth[1],
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     backgroundColor: theme.colors.surface0,
   },
   activeContainer: {
@@ -312,12 +312,12 @@ const styles = StyleSheet.create((theme) => ({
     borderWidth: theme.borderWidth[1],
   },
   actionButtonCancel: {
-    borderColor: theme.colors.border,
-    backgroundColor: theme.colors.surface0,
+    borderColor: theme.colors.borderGlass,
+    backgroundColor: theme.colors.surfaceCard,
   },
   actionButtonSecondary: {
-    borderColor: theme.colors.border,
-    backgroundColor: theme.colors.surface0,
+    borderColor: theme.colors.borderGlass,
+    backgroundColor: theme.colors.surfaceCard,
   },
   actionButtonConfirm: {
     borderColor: theme.colors.foreground,

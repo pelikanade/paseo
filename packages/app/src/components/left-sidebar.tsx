@@ -844,7 +844,7 @@ const styles = StyleSheet.create((theme) => ({
     gap: 2,
     paddingBottom: theme.spacing[1.5],
     borderBottomWidth: 1,
-    borderBottomColor: theme.colors.border,
+    borderBottomColor: theme.colors.borderGlass,
   },
   sidebarHeaderGroupBelowChrome: {
     paddingTop: 0,
@@ -858,7 +858,7 @@ const styles = StyleSheet.create((theme) => ({
   },
   desktopSidebarBorder: {
     borderRightWidth: 1,
-    borderRightColor: theme.colors.border,
+    borderRightColor: theme.colors.borderGlass,
     backgroundColor: theme.colors.surfaceSidebar,
   },
   sidebarDragArea: {
@@ -893,7 +893,7 @@ const styles = StyleSheet.create((theme) => ({
   },
   footerContainer: {
     borderTopWidth: 1,
-    borderTopColor: theme.colors.border,
+    borderTopColor: theme.colors.borderGlass,
   },
   // Buttons sit edge to edge; their own inset spaces the glyphs.
   sidebarFooter: {

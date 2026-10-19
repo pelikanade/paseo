@@ -549,7 +549,7 @@ const styles = StyleSheet.create((theme) => ({
     paddingHorizontal: theme.spacing[3],
   },
   commentBlock: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceCard,
     borderWidth: theme.borderWidth[1],
     borderColor: theme.colors.borderAccent,
     borderRadius: theme.borderRadius.lg,
@@ -587,14 +587,14 @@ const styles = StyleSheet.create((theme) => ({
       : {}),
   },
   iconButtonHovered: {
-    backgroundColor: theme.colors.surface3,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   iconButtonDestructiveHovered: {
-    backgroundColor: theme.colors.surface3,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   editorBlock: {
     minHeight: INLINE_REVIEW_EDITOR_HEIGHT,
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceCard,
     borderWidth: theme.borderWidth[1],
     borderColor: theme.colors.borderAccent,
     borderRadius: theme.borderRadius.lg,
@@ -606,9 +606,9 @@ const styles = StyleSheet.create((theme) => ({
     flex: 1,
     minHeight: 0,
     color: theme.colors.foreground,
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCard,
     borderWidth: theme.borderWidth[1],
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     borderRadius: theme.borderRadius.md,
     paddingHorizontal: theme.spacing[3],
     paddingVertical: theme.spacing[2],

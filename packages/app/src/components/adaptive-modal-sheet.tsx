@@ -91,14 +91,14 @@ const styles = StyleSheet.create((theme) => ({
     maxHeight: "85%",
     flexShrink: 1,
     minHeight: 0,
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceMenu,
     borderRadius: theme.borderRadius.xl,
     borderWidth: 1,
-    borderColor: theme.colors.surface2,
+    borderColor: theme.colors.borderAccent,
   },
   headerContainer: {
     borderBottomWidth: 1,
-    borderBottomColor: theme.colors.surface2,
+    borderBottomColor: theme.colors.borderGlass,
   },
   headerRow: {
     paddingHorizontal: theme.spacing[SHEET_HORIZONTAL_PADDING_SCALE],
@@ -161,7 +161,7 @@ const styles = StyleSheet.create((theme) => ({
     paddingHorizontal: theme.spacing[3],
     paddingVertical: theme.spacing[2],
     borderBottomWidth: 1,
-    borderBottomColor: theme.colors.border,
+    borderBottomColor: theme.colors.borderGlass,
   },
   inlineTitle: {
     flex: 1,
@@ -213,7 +213,7 @@ const styles = StyleSheet.create((theme) => ({
     paddingHorizontal: theme.spacing[SHEET_HORIZONTAL_PADDING_SCALE],
     paddingVertical: theme.spacing[3],
     borderTopWidth: 1,
-    borderTopColor: theme.colors.surface2,
+    borderTopColor: theme.colors.borderGlass,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
@@ -230,12 +230,12 @@ export function SheetBackground({ style }: BottomSheetBackgroundProps) {
     () => [
       style,
       {
-        backgroundColor: theme.colors.surface0,
+        backgroundColor: theme.colors.surfaceMenu,
         borderTopLeftRadius: theme.borderRadius["2xl"],
         borderTopRightRadius: theme.borderRadius["2xl"],
       },
     ],
-    [style, theme.colors.surface0, theme.borderRadius],
+    [style, theme.colors.surfaceMenu, theme.borderRadius],
   );
   return <Animated.View pointerEvents="none" style={combinedStyle} />;
 }

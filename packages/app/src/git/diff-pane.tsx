@@ -2032,9 +2032,9 @@ const styles = StyleSheet.create((theme) => ({
     paddingHorizontal: theme.spacing[3],
     paddingVertical: theme.spacing[2],
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     borderRadius: theme.borderRadius.md,
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCard,
   },
   forgeSetupCalloutText: {
     fontSize: theme.fontSize.sm,

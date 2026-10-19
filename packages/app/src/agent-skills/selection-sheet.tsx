@@ -271,7 +271,7 @@ const styles = StyleSheet.create((theme) => ({
     height: 22,
     borderRadius: theme.borderRadius.sm,
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     alignItems: "center",
     justifyContent: "center",
   },

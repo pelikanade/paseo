@@ -13,6 +13,7 @@ import { StyleSheet, useUnistyles } from "react-native-unistyles";
 import { useTranslation } from "react-i18next";
 import { File, Folder } from "lucide-react-native";
 import type { Theme } from "@/styles/theme";
+import { glassBackdropFilter } from "@/styles/theme";
 import { getScrollOffsetToRevealItem } from "./scroll-reveal";
 
 export interface AutocompleteOption {
@@ -293,7 +294,7 @@ const styles = StyleSheet.create((theme: Theme) => ({
     gap: theme.spacing[1],
   },
   detailCard: {
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCard,
     borderWidth: theme.borderWidth[1],
     borderColor: theme.colors.borderAccent,
     borderRadius: theme.borderRadius.lg,
@@ -319,11 +320,12 @@ const styles = StyleSheet.create((theme: Theme) => ({
   container: {
     flexShrink: 1,
     minHeight: 0,
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceMenu,
     borderWidth: theme.borderWidth[1],
     borderColor: theme.colors.borderAccent,
     borderRadius: theme.borderRadius.lg,
     overflow: "hidden",
+    ...glassBackdropFilter,
     ...theme.shadow.md,
   },
   scrollView: {
@@ -347,7 +349,7 @@ const styles = StyleSheet.create((theme: Theme) => ({
     marginRight: theme.spacing[1],
   },
   itemActive: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceRowSelected,
   },
   itemMain: {
     flex: 1,

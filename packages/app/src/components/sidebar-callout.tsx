@@ -150,7 +150,7 @@ const styles = StyleSheet.create((theme) => ({
     paddingVertical: theme.spacing[3],
     paddingHorizontal: theme.spacing[4],
     borderTopWidth: theme.borderWidth[1],
-    borderTopColor: theme.colors.border,
+    borderTopColor: theme.colors.borderGlass,
     gap: theme.spacing[2],
   },
   containerError: {
@@ -215,7 +215,7 @@ const styles = StyleSheet.create((theme) => ({
   },
   actionButtonSecondary: {
     backgroundColor: "transparent",
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
   },
   actionButtonPressed: {
     opacity: 0.8,

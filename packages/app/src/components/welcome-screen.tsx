@@ -39,7 +39,7 @@ interface WelcomeAction {
 const styles = StyleSheet.create((theme) => ({
   root: {
     flex: 1,
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: "transparent",
   },
   scrollView: {
     flex: 1,
@@ -84,9 +84,9 @@ const styles = StyleSheet.create((theme) => ({
     gap: theme.spacing[3],
     paddingVertical: theme.spacing[4],
     borderRadius: theme.borderRadius.xl,
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceCard,
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
   },
   actionButtonPrimary: {
     backgroundColor: theme.colors.accent,

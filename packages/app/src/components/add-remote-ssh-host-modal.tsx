@@ -56,7 +56,7 @@ const styles = StyleSheet.create((theme) => {
       alignItems: "center",
       justifyContent: "center",
       borderRadius: theme.borderRadius.md,
-      backgroundColor: theme.colors.surface2,
+      backgroundColor: theme.colors.surfaceCard,
     },
     iconButtonMd: {
       minHeight: CONTROL_HEIGHTS.field,
@@ -64,7 +64,7 @@ const styles = StyleSheet.create((theme) => {
       alignItems: "center",
       justifyContent: "center",
       borderRadius: theme.borderRadius.lg,
-      backgroundColor: theme.colors.surface2,
+      backgroundColor: theme.colors.surfaceCard,
     },
     controlRest: {
       ...geometry.controlRest,

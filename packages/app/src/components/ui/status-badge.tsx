@@ -48,7 +48,7 @@ const styles = StyleSheet.create((theme) => ({
     gap: 6,
     borderRadius: theme.borderRadius.full,
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     backgroundColor: theme.colors.surface3,
     paddingHorizontal: theme.spacing[2],
     paddingVertical: 3,

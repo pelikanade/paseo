@@ -2204,7 +2204,7 @@ const styles = StyleSheet.create((theme: Theme) => ({
     flexShrink: 1,
     flexDirection: "column",
     gap: theme.spacing[3],
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCard,
     borderWidth: theme.borderWidth[1],
     borderColor: theme.colors.borderAccent,
     borderRadius: theme.borderRadius["2xl"],
@@ -2359,7 +2359,7 @@ const styles = StyleSheet.create((theme: Theme) => ({
     color: theme.colors.accentForeground,
   },
   iconButtonHovered: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   tooltipRow: {
     flexDirection: "row",

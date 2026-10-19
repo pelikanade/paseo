@@ -105,28 +105,28 @@ export function GitActionsSplitButton({
     ({ hovered, pressed }: PressableStateCallbackType & { hovered?: boolean }) => [
       styles.splitButtonPrimary,
       (Boolean(hovered) || pressed) &&
-        inlineUnistylesStyle({ backgroundColor: theme.colors.surface2 }),
+        inlineUnistylesStyle({ backgroundColor: theme.colors.surfaceRowHover }),
       primaryDisabled && styles.splitButtonPrimaryDisabled,
     ],
-    [primaryDisabled, theme.colors.surface2],
+    [primaryDisabled, theme.colors.surfaceRowHover],
   );
 
   const caretTriggerStyle = useCallback(
     ({ hovered, pressed, open }: { hovered: boolean; pressed: boolean; open: boolean }) => [
       styles.splitButtonCaret,
       (hovered || pressed || open) &&
-        inlineUnistylesStyle({ backgroundColor: theme.colors.surface2 }),
+        inlineUnistylesStyle({ backgroundColor: theme.colors.surfaceRowHover }),
     ],
-    [theme.colors.surface2],
+    [theme.colors.surfaceRowHover],
   );
 
   const menuOnlyTriggerStyle = useCallback(
     ({ hovered, pressed, open }: { hovered: boolean; pressed: boolean; open: boolean }) => [
       styles.menuOnlyTrigger,
       (hovered || pressed || open) &&
-        inlineUnistylesStyle({ backgroundColor: theme.colors.surface2 }),
+        inlineUnistylesStyle({ backgroundColor: theme.colors.surfaceRowHover }),
     ],
-    [theme.colors.surface2],
+    [theme.colors.surfaceRowHover],
   );
 
   const menuOnlyActions = [

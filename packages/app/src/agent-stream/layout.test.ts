@@ -8,6 +8,7 @@ import {
 } from "./strategy";
 import { resolveStreamRenderStrategy } from "./strategy-resolver";
 import { layoutStream, type StreamLayout, type StreamLayoutItem } from "./layout";
+import { SPACING } from "@/styles/theme";
 
 function timestamp(seed: number): Date {
   return new Date(`2026-01-01T00:00:${seed.toString().padStart(2, "0")}.000Z`);
@@ -67,6 +68,24 @@ function thought(id: string, seed: number): Extract<StreamItem, { kind: "thought
     text: id,
     timestamp: timestamp(seed),
     status: "ready",
+  };
+}
+
+function pluginItem(
+  id: string,
+  seed: number,
+  sequence?: "tool",
+): Extract<StreamItem, { kind: "plugin" }> {
+  return {
+    kind: "plugin",
+    id,
+    pluginId: "test",
+    pluginItemId: id,
+    itemKind: "intent",
+    version: 1,
+    ...(sequence ? { sequence } : {}),
+    data: {},
+    timestamp: timestamp(seed),
   };
 }
 
@@ -391,6 +410,48 @@ describe("layoutStream", () => {
 
     expect(findLayoutItem(layout, shell.id).toolSequence).toBe("first");
     expect(findLayoutItem(layout, thinking.id).toolSequence).toBe("last");
+  });
+
+  it("joins flagged plugin rows to the tool sequence", () => {
+    const shell = toolCall("tool-1", 2);
+    const plugin = pluginItem("plugin-1", 3, "tool");
+    const assistant = assistantMessage("a1", 4);
+    const layout = layoutFor({
+      platform: "android",
+      tail: [userMessage("u1", 1), shell, plugin, assistant],
+    });
+
+    expect(findLayoutItem(layout, shell.id).toolSequence).toBe("first");
+    expect(findLayoutItem(layout, plugin.id).toolSequence).toBe("last");
+    expect(findLayoutItem(layout, shell.id).gapBelow).toBe(0);
+    expect(findLayoutItem(layout, plugin.id).isLastInToolSequence).toBe(true);
+    expect(findLayoutItem(layout, plugin.id).gapBelow).toBe(SPACING[1]);
+  });
+
+  it("treats a lone flagged plugin row as a single tool sequence item", () => {
+    const plugin = pluginItem("plugin-1", 3, "tool");
+    const layout = layoutFor({
+      platform: "android",
+      tail: [userMessage("u1", 1), plugin, assistantMessage("a1", 4)],
+    });
+
+    expect(findLayoutItem(layout, plugin.id).toolSequence).toBe("single");
+    expect(findLayoutItem(layout, plugin.id).isLastInToolSequence).toBe(true);
+    expect(findLayoutItem(layout, plugin.id).gapBelow).toBe(SPACING[1]);
+  });
+
+  it("leaves unflagged plugin rows outside the tool sequence", () => {
+    const shell = toolCall("tool-1", 2);
+    const plugin = pluginItem("plugin-1", 3);
+    const layout = layoutFor({
+      platform: "android",
+      tail: [userMessage("u1", 1), shell, plugin, assistantMessage("a1", 4)],
+    });
+
+    expect(findLayoutItem(layout, plugin.id).toolSequence).toBe("none");
+    expect(findLayoutItem(layout, plugin.id).isLastInToolSequence).toBe(false);
+    expect(findLayoutItem(layout, shell.id).gapBelow).toBe(SPACING[4]);
+    expect(findLayoutItem(layout, plugin.id).gapBelow).toBe(SPACING[4]);
   });
 
   it("keeps bottom and inline footer ownership mutually exclusive", () => {

@@ -30,6 +30,11 @@ export default defineConfig({
     trace: process.env.CI ? "on-first-retry" : "retain-on-failure",
     screenshot: "only-on-failure",
     video: videoMode(),
+    // NixOS cannot execute Playwright's generic browser builds. Point the run at a
+    // patched binary with E2E_CHROMIUM_PATH when the cached build is unavailable.
+    ...(process.env.E2E_CHROMIUM_PATH
+      ? { launchOptions: { executablePath: process.env.E2E_CHROMIUM_PATH } }
+      : {}),
   },
   projects: [
     {

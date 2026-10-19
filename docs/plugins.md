@@ -579,6 +579,12 @@ its Zod schema, and mounts the component inside the normal plugin runtime and er
 optional output `id` distinguishes several stable replacements from the same source item; its output
 index is the default.
 
+Set `sequence: "tool"` on a replacement or appended row to join the native tool sequence
+(`tool_call`, `thought`, `todo_list`). The row gets the same zero gap between sequence rows, the
+native 4px/16px container margin, and the normal turn-footer margin. Omitted rows keep the generic
+16px plugin spacing. Daemons that apply the flag advertise
+`server_info.features.pluginTimelineToolSequence`; older daemons strip it and keep the generic gap.
+
 Transformers run synchronously and must be deterministic. When several transformers match, the
 first one that returns a result owns that source item. Plugin and registration ordering is stable.
 See `plugin-examples/timeline-items` for the complete contract.
@@ -591,6 +597,7 @@ await paseo.agents.ref(agentId).timeline.append({
   id: "review",
   kind: "review-result",
   version: 1,
+  sequence: "tool",
   data: { status: "ready" },
 });
 ```

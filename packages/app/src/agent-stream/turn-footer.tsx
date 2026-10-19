@@ -208,7 +208,11 @@ function CompletedTurnFooter({
 
 function TurnFooterRow({ children }: { children: ReactNode }) {
   const rowStyle = useMemo(() => [stylesheet.streamItemWrapper, stylesheet.turnFooterRow], []);
-  return <View style={rowStyle}>{children}</View>;
+  return (
+    <View style={rowStyle} testID="turn-footer">
+      {children}
+    </View>
+  );
 }
 
 const stylesheet = StyleSheet.create((theme) => ({

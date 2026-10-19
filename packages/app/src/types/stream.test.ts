@@ -155,6 +155,28 @@ describe("plugin timeline rows", () => {
       data: { status: "complete" },
     });
   });
+
+  it("keeps an appended row's tool sequence", () => {
+    const stream = reduceStreamUpdate(
+      [],
+      {
+        type: "timeline",
+        provider: "codex",
+        item: {
+          type: "plugin",
+          id: "intent-1",
+          pluginId: "intent",
+          kind: "intent",
+          version: 1,
+          sequence: "tool",
+          data: { text: "Reading" },
+        },
+      },
+      new Date(1),
+    );
+
+    expect(stream[0]).toMatchObject({ kind: "plugin", sequence: "tool" });
+  });
 });
 
 describe("user message identity", () => {

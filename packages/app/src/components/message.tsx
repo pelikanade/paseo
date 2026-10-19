@@ -120,7 +120,7 @@ export function MessageOuterSpacingProvider({
   );
 }
 
-function useDisableOuterSpacing(disableOuterSpacing: boolean | undefined) {
+export function useDisableOuterSpacing(disableOuterSpacing?: boolean) {
   const contextValue = useContext(MessageOuterSpacingContext);
   return disableOuterSpacing ?? contextValue;
 }

@@ -55,10 +55,14 @@ describe("plugin protocol compatibility", () => {
           id: "review-1",
           kind: "review",
           version: 1,
+          sequence: "tool",
           data: { status: "running" },
         },
       }),
-    ).toMatchObject({ type: "agent.timeline.append.request" });
+    ).toMatchObject({
+      type: "agent.timeline.append.request",
+      item: { sequence: "tool" },
+    });
     expect(
       SessionOutboundMessageSchema.parse({
         type: "agent.timeline.append.response",
@@ -71,10 +75,30 @@ describe("plugin protocol compatibility", () => {
         payload: {
           status: "server_info",
           serverId: "server-1",
-          features: { pluginTimelineItems: true },
+          features: { pluginTimelineItems: true, pluginTimelineToolSequence: true },
         },
       }).payload,
-    ).toMatchObject({ features: { pluginTimelineItems: true } });
+    ).toMatchObject({
+      features: { pluginTimelineItems: true, pluginTimelineToolSequence: true },
+    });
+  });
+
+  it("rejects an unknown plugin timeline sequence", () => {
+    expect(() =>
+      SessionInboundMessageSchema.parse({
+        type: "agent.timeline.append.request",
+        requestId: "append-1",
+        agentId: "agent-1",
+        item: {
+          type: "plugin",
+          id: "row-1",
+          kind: "review",
+          version: 1,
+          sequence: "assistant",
+          data: {},
+        },
+      }),
+    ).toThrow();
   });
 
   it.each([0, -1, 1.5])("rejects plugin timeline version %s", (version) => {

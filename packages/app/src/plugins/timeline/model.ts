@@ -64,6 +64,10 @@ function parseTransformResult(value: unknown): PluginTimelineTransformResult {
     if (!Number.isInteger(version) || Number(version) < 1) {
       throw new Error(`invalid transformed timeline item version: ${String(version)}`);
     }
+    const sequence = Reflect.get(item, "sequence");
+    if (sequence !== undefined && sequence !== "tool") {
+      throw new Error(`invalid transformed timeline item sequence: ${String(sequence)}`);
+    }
     if (!isTimelineData(Reflect.get(item, "data"), new Set())) {
       throw new Error(`transformed timeline item ${kind} data must be JSON-compatible`);
     }
@@ -85,14 +89,18 @@ export function transformTimelineItem(
         const output = transform({ item: input.item, phase: input.phase });
         if (output === undefined) continue;
         const parsed = parseTransformResult(output);
-        return parsed.items.map((transformedItem, index) => ({
-          type: "plugin",
-          id: transformedItem.id ?? `${input.sourceId}/${index}`,
-          kind: transformedItem.kind,
-          version: transformedItem.version,
-          data: JSON.parse(JSON.stringify(transformedItem.data)) as PluginTimelineData,
-          pluginId: plugin.id,
-        }));
+        return parsed.items.map((transformedItem, index) => {
+          const item: InstalledPluginTimelineItem = {
+            type: "plugin",
+            id: transformedItem.id ?? `${input.sourceId}/${index}`,
+            kind: transformedItem.kind,
+            version: transformedItem.version,
+            data: JSON.parse(JSON.stringify(transformedItem.data)) as PluginTimelineData,
+            pluginId: plugin.id,
+          };
+          if (transformedItem.sequence) item.sequence = transformedItem.sequence;
+          return item;
+        });
       } catch (error) {
         console.warn(
           `[Plugins] Timeline transformer failed: ${plugin.id}/${transformer.id}`,

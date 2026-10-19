@@ -871,10 +871,19 @@ const AgentStreamViewComponent = forwardRef<AgentStreamViewHandle, AgentStreamVi
               />
             );
 
-          case "plugin":
+          case "plugin": {
+            let rowSpacing: ViewStyle | undefined;
+            if (item.sequence === "tool") {
+              rowSpacing = layoutItem.isLastInToolSequence
+                ? stylesheet.pluginToolSequenceLastSpacing
+                : stylesheet.pluginToolSequenceSpacing;
+            }
             return (
-              <PluginTimelineItemView agentId={agentId} item={item} serverId={resolvedServerId} />
+              <View style={rowSpacing}>
+                <PluginTimelineItemView agentId={agentId} item={item} serverId={resolvedServerId} />
+              </View>
             );
+          }
 
           default:
             return null;
@@ -1665,6 +1674,14 @@ const stylesheet = StyleSheet.create((theme) => ({
   syncingIndicatorText: {
     color: theme.colors.foregroundMuted,
     fontSize: theme.fontSize.base,
+  },
+  // Native tool rows carry this margin inside their own container. Plugin rows that join the
+  // tool sequence reproduce it here so the host, not the plugin, owns the row rhythm.
+  pluginToolSequenceSpacing: {
+    marginBottom: theme.spacing[1],
+  },
+  pluginToolSequenceLastSpacing: {
+    marginBottom: theme.spacing[4],
   },
   invertedWrapper: {
     transform: [{ scaleY: -1 }],

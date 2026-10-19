@@ -86,6 +86,11 @@ export interface PluginTimelineItem {
   id?: string;
   kind: string;
   version: number;
+  /**
+   * Joins the native tool sequence (`tool_call` / `thought` / `todo_list`) so the host applies
+   * the same gaps and row rhythm as a tool row. Omitted rows keep the generic plugin spacing.
+   */
+  sequence?: "tool";
   data: PluginTimelineData;
 }
 

@@ -47,6 +47,51 @@ export default function contribute(client) {
   return () => {};
 }`;
 
+const APPEND_PLUGIN_ID = "timeline-append-e2e";
+
+const APPEND_CLIENT_SOURCE = `import React from "react";
+import { Text, View } from "react-native";
+import { z } from "zod";
+
+function Row({ item }) {
+  return <View testID="plugin-tool-row"><Text>{item.data.label}</Text></View>;
+}
+
+export default function contribute(client) {
+  client.addTimelineRenderer({
+    kind: "intent", version: 1,
+    schema: z.object({ label: z.string() }),
+    Component: Row,
+  });
+  return () => {};
+}`;
+
+const APPEND_SERVER_SOURCE = `import type { PluginServerContext } from "@getpaseo/plugin/server";
+
+const rows = [
+  { id: "intent-1", sequence: "tool", label: "Reading one" },
+  { id: "intent-2", sequence: "tool", label: "Reading two" },
+  { id: "intent-plain", label: "Reading plain" },
+  { id: "intent-3", sequence: "tool", label: "Reading three" },
+];
+
+export default function contribute(server: PluginServerContext) {
+  server.on("agent.turn_ended", async (event, { paseo }) => {
+    const timeline = paseo.agents.ref(event.agent.id).timeline;
+    for (const row of rows) {
+      await timeline.append({
+        type: "plugin",
+        id: row.id,
+        kind: "intent",
+        version: 1,
+        ...(row.sequence ? { sequence: row.sequence } : {}),
+        data: { label: row.label },
+      });
+    }
+  });
+  return () => {};
+}`;
+
 const PROMPT_PLUGIN_ID = "timeline-prompt-e2e";
 
 function promptClientSource(prompts?: readonly string[]): string {
@@ -81,9 +126,10 @@ export default function contribute(client) {
 async function withDirectoryPlugin(options: {
   pluginId: string;
   source: string;
+  serverSource?: string;
   run: () => Promise<void>;
 }): Promise<void> {
-  const { pluginId, source, run } = options;
+  const { pluginId, source, serverSource, run } = options;
   const directory = await mkdtemp(path.join(tmpdir(), "paseo-timeline-plugin-"));
   const pluginClient = await connectNewWorkspaceDaemonClient({ ownProjects: false });
   const previous = await pluginClient.getDaemonConfig();
@@ -93,6 +139,9 @@ async function withDirectoryPlugin(options: {
       JSON.stringify({ id: pluginId, requirements: pluginRequirements }),
     );
     await writeFile(path.join(directory, "index.client.tsx"), source);
+    if (serverSource) {
+      await writeFile(path.join(directory, "index.server.ts"), serverSource);
+    }
     await pluginClient.patchDaemonConfig({ pluginsEnabled: true });
     await pluginClient.installDirectoryPlugin(directory);
     await run();
@@ -158,6 +207,61 @@ export async function withTimelinePlugin(
   } finally {
     await agent.cleanup();
   }
+}
+
+export async function withAppendTimelinePlugin(
+  page: Page,
+  info: TestInfo,
+  run: (agent: MockAgentWorkspace) => Promise<void>,
+): Promise<void> {
+  info.setTimeout(120_000);
+  const agent = await seedMockAgentWorkspace({
+    repoPrefix: "timeline-append-",
+    title: "Timeline append regression",
+    model: "e2e-fast-stream",
+  });
+  try {
+    await withDirectoryPlugin({
+      pluginId: APPEND_PLUGIN_ID,
+      source: APPEND_CLIENT_SOURCE,
+      serverSource: APPEND_SERVER_SOURCE,
+      run: async () => {
+        await openAgentRoute(page, agent);
+        await expect(page.getByRole("textbox", { name: "Message agent..." }).first()).toBeVisible();
+        await run(agent);
+        await info.attach("timeline-append", {
+          body: await page.screenshot({ path: info.outputPath("timeline-append.png") }),
+          contentType: "image/png",
+        });
+      },
+    });
+  } finally {
+    await agent.cleanup();
+  }
+}
+
+export interface TimelineRowRects {
+  assistantBottoms: number[];
+  pluginRows: Array<{ top: number; bottom: number }>;
+  footerTop: number | null;
+}
+
+/** Vertical geometry in CSS pixels, independent of scroll position. */
+export async function readTimelineRowRects(page: Page): Promise<TimelineRowRects> {
+  return page.evaluate(() => {
+    const rects = (testId: string) =>
+      Array.from(document.querySelectorAll(`[data-testid="${testId}"]`)).map((element) =>
+        element.getBoundingClientRect(),
+      );
+    return {
+      assistantBottoms: rects("assistant-message").map((rect) => rect.bottom),
+      pluginRows: rects("plugin-tool-row").map((rect) => ({
+        top: rect.top,
+        bottom: rect.bottom,
+      })),
+      footerTop: rects("turn-footer").at(-1)?.top ?? null,
+    };
+  });
 }
 
 /** Draws all prompts, or only the selected prompts, as plugin cards. */

@@ -64,6 +64,24 @@ describe("plugin timeline projection", () => {
     ]);
   });
 
+  it("keeps the tool sequence on a projected row", () => {
+    const transform: TimelineItemTransform = ({ sourceId }) => [
+      {
+        type: "plugin",
+        id: `${sourceId}/0`,
+        pluginId: "test",
+        kind: "intent",
+        version: 1,
+        sequence: "tool",
+        data: { text: "Reading" },
+      },
+    ];
+
+    const [projected] = projectPluginTimelineItems([thought("Reading")], transform);
+    expect(projected?.kind).toBe("plugin");
+    expect(projected?.kind === "plugin" ? projected.sequence : undefined).toBe("tool");
+  });
+
   it("memoizes projection on the source row reference", () => {
     const source = thought("Stable");
     const transform: TimelineItemTransform = vi.fn(() => undefined);

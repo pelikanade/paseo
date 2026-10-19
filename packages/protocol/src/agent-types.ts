@@ -361,6 +361,8 @@ export interface PluginTimelineItem {
   pluginId: string;
   kind: string;
   version: number;
+  /** Joins the native tool sequence for transcript spacing. */
+  sequence?: "tool";
   data: JsonValue;
 }
 

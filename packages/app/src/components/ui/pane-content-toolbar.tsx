@@ -203,9 +203,9 @@ export function paneContentToolbarIconButtonStyle(
 const styles = StyleSheet.create((theme) => ({
   toolbar: {
     height: WORKSPACE_SECONDARY_HEADER_HEIGHT,
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: theme.colors.surfaceCard,
     borderBottomWidth: 1,
-    borderBottomColor: theme.colors.border,
+    borderBottomColor: theme.colors.borderGlass,
     flexShrink: 0,
   },
   controls: {

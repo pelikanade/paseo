@@ -19,7 +19,7 @@ import {
 } from "lucide-react-native";
 import { getForgePresentation, normalizeForge } from "@/git/forge";
 import { ForgeBrandIcon } from "@/git/forge-icon";
-import type { Theme } from "@/styles/theme";
+import { glassBackdropFilter, type Theme } from "@/styles/theme";
 import { DiffStat } from "@/components/diff-stat";
 import { Pressable } from "react-native";
 import type { GestureResponderEvent } from "react-native";
@@ -351,12 +351,13 @@ function checksSummaryPressableStyle({ hovered = false }: { pressed: boolean; ho
 
 const styles = StyleSheet.create((theme) => ({
   card: {
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceMenu,
     borderWidth: 1,
     borderColor: theme.colors.borderAccent,
     borderRadius: theme.borderRadius.lg,
     paddingTop: theme.spacing[2],
     width: HOVER_CARD_WIDTH,
+    ...glassBackdropFilter,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.2,
@@ -396,10 +397,10 @@ const styles = StyleSheet.create((theme) => ({
   },
   separator: {
     height: 1,
-    backgroundColor: theme.colors.border,
+    backgroundColor: theme.colors.borderGlass,
   },
   listRowHovered: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   checksSummaryRow: {
     flexDirection: "row",

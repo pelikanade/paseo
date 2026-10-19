@@ -91,7 +91,7 @@ export function OverviewToolCallGroupSheet({
 const styles = StyleSheet.create((theme) => ({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceMenu,
   },
   header: {
     flexDirection: "row",
@@ -100,7 +100,7 @@ const styles = StyleSheet.create((theme) => ({
     paddingHorizontal: theme.spacing[4],
     paddingVertical: theme.spacing[3],
     borderBottomWidth: theme.borderWidth[1],
-    borderBottomColor: theme.colors.border,
+    borderBottomColor: theme.colors.borderGlass,
   },
   headerLeft: {
     flexDirection: "row",
@@ -120,7 +120,7 @@ const styles = StyleSheet.create((theme) => ({
   content: {
     flex: 1,
     minHeight: 0,
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceMenu,
   },
   contentContainer: {
     paddingHorizontal: 13,

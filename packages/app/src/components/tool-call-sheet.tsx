@@ -72,7 +72,7 @@ const ThemedCloseIcon = withUnistyles(X, (theme) => ({
 
 export const ToolCallSheetModal = withUnistyles(IsolatedBottomSheetModal, (theme) => ({
   backgroundStyle: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceMenu,
     borderRadius: 16,
   },
   handleIndicatorStyle: {
@@ -198,7 +198,7 @@ function ToolCallSheetContent({ data, onClose }: ToolCallSheetContentProps) {
 const styles = StyleSheet.create((theme) => ({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceMenu,
   },
   header: {
     flexDirection: "row",
@@ -207,7 +207,7 @@ const styles = StyleSheet.create((theme) => ({
     paddingHorizontal: theme.spacing[4],
     paddingVertical: theme.spacing[3],
     borderBottomWidth: theme.borderWidth[1],
-    borderBottomColor: theme.colors.border,
+    borderBottomColor: theme.colors.borderGlass,
   },
   headerLeft: {
     flexDirection: "row",
@@ -227,7 +227,7 @@ const styles = StyleSheet.create((theme) => ({
   content: {
     flex: 1,
     minHeight: 0,
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceMenu,
   },
   contentContainer: {
     padding: 0,

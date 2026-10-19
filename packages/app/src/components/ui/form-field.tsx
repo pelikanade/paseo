@@ -260,7 +260,7 @@ const formInputStyles = StyleSheet.create((theme) => {
 
   return {
     chrome: {
-      backgroundColor: theme.colors.surface2,
+      backgroundColor: theme.colors.surfaceCard,
     },
     chromeSm: {
       ...geometry.fieldControlSm,

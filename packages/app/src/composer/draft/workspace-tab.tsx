@@ -686,7 +686,7 @@ const styles = StyleSheet.create((theme) => ({
   container: {
     flex: 1,
     width: "100%",
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: "transparent",
   },
   contentContainer: {
     flex: 1,

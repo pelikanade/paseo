@@ -69,7 +69,7 @@ export function ScreenHeader({
 
 const styles = StyleSheet.create((theme) => ({
   header: {
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: "transparent",
   },
   inner: {},
   row: {
@@ -82,7 +82,7 @@ const styles = StyleSheet.create((theme) => ({
     alignItems: "center",
     justifyContent: "space-between",
     borderBottomWidth: theme.borderWidth[1],
-    borderBottomColor: theme.colors.border,
+    borderBottomColor: theme.colors.borderGlass,
     userSelect: "none",
   },
   left: {

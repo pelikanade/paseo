@@ -169,7 +169,7 @@ const styles = StyleSheet.create((theme) => ({
     flexDirection: "row",
     alignItems: "center",
     padding: theme.spacing[2],
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCard,
   },
   errorText: { color: theme.colors.foreground, fontSize: theme.fontSize.sm, flex: 1 },
   highlight: { backgroundColor: theme.colors.statusWarning, color: theme.colors.surface0 },

@@ -88,10 +88,10 @@ export function SettingsCollapsibleRow({
 
 const styles = StyleSheet.create((theme) => ({
   headerHovered: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceRowHover,
   },
   headerPressed: {
-    backgroundColor: theme.colors.surface3,
+    backgroundColor: theme.colors.surfaceRowPressed,
   },
   // Optical: the chevron's ink sits about 4px inside its box whether it points right or down; this
   // puts the ink on the card's trailing rail, where the switch and the reports' refresh buttons end.

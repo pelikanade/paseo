@@ -567,7 +567,7 @@ const styles = StyleSheet.create((theme) => ({
   logEntry: {
     padding: theme.spacing[3],
     gap: theme.spacing[1],
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceCard,
     borderRadius: theme.borderRadius.md,
   },
   logStdout: {

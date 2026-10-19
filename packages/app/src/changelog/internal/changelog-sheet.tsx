@@ -212,7 +212,7 @@ const styles = StyleSheet.create((theme) => ({
     gap: theme.spacing[2],
     paddingBottom: theme.spacing[2],
     borderBottomWidth: theme.borderWidth[1],
-    borderBottomColor: theme.colors.border,
+    borderBottomColor: theme.colors.borderGlass,
   },
   headingSpacer: {
     flex: 1,

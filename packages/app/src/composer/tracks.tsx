@@ -350,7 +350,7 @@ const styles = StyleSheet.create((theme) => {
       gap: theme.spacing[1],
     },
     row: trackRow,
-    rowActive: { ...trackRow, backgroundColor: theme.colors.surface2 },
+    rowActive: { ...trackRow, backgroundColor: theme.colors.surfaceRowSelected },
     // Segments sit twice as far apart as a mark sits from its own text, so a count reads as
     // belonging to the mark on its left rather than to the words on its right.
     segments: {

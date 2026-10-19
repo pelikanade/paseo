@@ -68,7 +68,6 @@ import type { WorkspaceTabLaunchPurpose } from "@/workspace-tabs/launcher";
 import type { SurfaceBackdrop } from "@/styles/surface-backdrop";
 import type { Theme } from "@/styles/theme";
 import { RenderProfile } from "@/utils/render-profiler";
-import { TrailingActionScrim } from "@/components/ui/trailing-action-scrim";
 import { useKeyboardActionHandler } from "@/hooks/use-keyboard-action-handler";
 import { useCompactTimeAgo } from "@/hooks/use-time-ago";
 import { formatCompactTimeAgoAsProse } from "@/utils/time";
@@ -903,7 +902,6 @@ function TabChip({
               showCloseControl ? styles.tabTrailingOverlayShown : styles.tabTrailingOverlayHidden,
             ]}
           >
-            <TrailingActionScrim backdrop={chipBackdrop} />
             <Pressable
               {...(closeButtonDragBlockers as object | undefined)}
               testID={closeButtonTestId}
@@ -1566,8 +1564,8 @@ const styles = StyleSheet.create((theme) => ({
     minWidth: 0,
     height: WORKSPACE_SECONDARY_HEADER_HEIGHT,
     borderBottomWidth: 1,
-    borderBottomColor: theme.colors.border,
-    backgroundColor: theme.colors.surface0,
+    borderBottomColor: theme.colors.borderGlass,
+    backgroundColor: "transparent",
     flexDirection: "row",
     alignItems: "center",
     overflow: "visible",
@@ -1597,7 +1595,7 @@ const styles = StyleSheet.create((theme) => ({
     alignItems: "center",
     paddingHorizontal: theme.spacing[0.5],
     borderRightWidth: 1,
-    borderRightColor: theme.colors.border,
+    borderRightColor: theme.colors.borderGlass,
   },
   inlineAddButton: {
     flexDirection: "row",
@@ -1622,13 +1620,13 @@ const styles = StyleSheet.create((theme) => ({
     userSelect: "none",
   },
   tabHovered: {
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceRowHover,
   },
   tabActive: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceRowHover,
   },
   tabActiveUnfocused: {
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceRowHover,
   },
   tabHoverFrame: {
     position: "relative",

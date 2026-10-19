@@ -40,7 +40,7 @@ export function Alert({
   const accentColor = resolveAccentColor(variant, theme);
   const borderColor =
     variant === "success" || !accentColor
-      ? theme.colors.border
+      ? theme.colors.borderGlass
       : hexColorWithAlpha(accentColor, 0.5);
 
   const sized = resolveSizeStyles(size);
@@ -136,7 +136,7 @@ const styles = StyleSheet.create((theme) => {
   return {
     container: {
       borderWidth: theme.borderWidth[1],
-      borderColor: theme.colors.border,
+      borderColor: theme.colors.borderGlass,
       backgroundColor: "transparent",
     },
     containerXs: alert.xs.container,

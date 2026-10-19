@@ -303,7 +303,7 @@ const styles = StyleSheet.create((theme) => ({
     borderRadius: theme.borderRadius["2xl"],
   },
   triggerHovered: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   toolbarGlyph16: {
     width: 16,
@@ -316,7 +316,7 @@ const styles = StyleSheet.create((theme) => ({
     flexShrink: 0,
   },
   triggerPressed: {
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   triggerDisabled: {
     opacity: 0.5,

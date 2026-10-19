@@ -101,9 +101,9 @@ const styles = StyleSheet.create((theme) => ({
     justifyContent: "space-between",
     paddingHorizontal: theme.spacing[4],
     paddingVertical: OVERLAY_VERTICAL_PADDING,
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceMenu,
     borderWidth: theme.borderWidth[1],
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
   },
   meterContainer: {
     flex: 1,
@@ -123,9 +123,9 @@ const styles = StyleSheet.create((theme) => ({
     justifyContent: "center",
   },
   muteButton: {
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: theme.colors.surfaceCard,
     borderWidth: theme.borderWidth[1],
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
   },
   muteButtonMuted: {
     backgroundColor: theme.colors.palette.red[600],

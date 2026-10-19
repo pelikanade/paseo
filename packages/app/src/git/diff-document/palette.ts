@@ -6,7 +6,7 @@ export function createDiffPalette(theme: Theme): DiffPalette {
   return {
     surface: theme.colors.surface0,
     headerSurface: theme.colors.surface0,
-    border: theme.colors.border,
+    border: theme.colors.borderGlass,
     foreground: theme.colors.foreground,
     foregroundMuted: theme.colors.foregroundMuted,
     addition: theme.colors.statusSuccess,

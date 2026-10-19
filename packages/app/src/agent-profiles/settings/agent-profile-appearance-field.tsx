@@ -312,7 +312,7 @@ const styles = StyleSheet.create((theme) => {
       gap: CELL_GAP,
       paddingBottom: theme.spacing[3],
       borderBottomWidth: theme.borderWidth[1],
-      borderBottomColor: theme.colors.border,
+      borderBottomColor: theme.colors.borderGlass,
     },
     colorCell: {
       width: COLOR_CELL_SIZE,
@@ -343,7 +343,7 @@ const styles = StyleSheet.create((theme) => {
     },
     cellSelected: {
       backgroundColor: theme.colors.surface2,
-      borderColor: theme.colors.border,
+      borderColor: theme.colors.borderGlass,
     },
     swatch: {
       width: SWATCH_SIZE,
@@ -352,7 +352,7 @@ const styles = StyleSheet.create((theme) => {
       alignItems: "center",
       justifyContent: "center",
       borderWidth: theme.borderWidth[1],
-      borderColor: theme.colors.border,
+      borderColor: theme.colors.borderGlass,
     },
     swatchNone: {
       backgroundColor: theme.colors.surface2,

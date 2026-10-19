@@ -185,7 +185,7 @@ const styles = StyleSheet.create((theme) => ({
   },
   errorsBanner: {
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     borderRadius: theme.borderRadius.lg,
     padding: theme.spacing[3],
     marginBottom: theme.spacing[3],
@@ -206,10 +206,10 @@ const styles = StyleSheet.create((theme) => ({
     gap: theme.spacing[3],
   },
   rowHovered: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   rowPressed: {
-    backgroundColor: theme.colors.surface3,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   leading: {
     width: 16,

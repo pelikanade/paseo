@@ -1723,7 +1723,7 @@ const styles = StyleSheet.create((theme) => ({
     paddingVertical: 4,
     borderRadius: theme.borderRadius.full,
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     backgroundColor: theme.colors.surface3,
     maxWidth: 200,
   },

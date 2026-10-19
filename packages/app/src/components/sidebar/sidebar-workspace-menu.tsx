@@ -447,6 +447,6 @@ const styles = StyleSheet.create((theme) => ({
     marginRight: -7,
   },
   triggerHovered: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.interactionHighlight,
   },
 }));

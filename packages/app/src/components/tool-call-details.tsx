@@ -830,7 +830,7 @@ const styles = StyleSheet.create((theme) => {
       paddingHorizontal: theme.spacing[3],
       paddingVertical: theme.spacing[2],
       borderBottomWidth: theme.borderWidth[1],
-      borderBottomColor: theme.colors.border,
+      borderBottomColor: theme.colors.borderGlass,
     },
     groupHeaderText: {
       color: theme.colors.foregroundMuted,
@@ -842,7 +842,7 @@ const styles = StyleSheet.create((theme) => {
       paddingHorizontal: theme.spacing[4],
       paddingVertical: theme.spacing[4],
       borderBottomWidth: theme.borderWidth[1],
-      borderBottomColor: theme.colors.border,
+      borderBottomColor: theme.colors.borderGlass,
     },
     paseoSectionTitle: {
       color: theme.colors.foreground,
@@ -904,16 +904,18 @@ const styles = StyleSheet.create((theme) => {
     },
     diffContainer: {
       borderWidth: theme.borderWidth[1],
-      borderColor: theme.colors.border,
+      borderColor: theme.colors.borderGlass,
       borderRadius: theme.borderRadius.base,
       overflow: "hidden",
-      backgroundColor: theme.colors.surface2,
+      backgroundColor: theme.colors.surfaceCard,
     },
     fullBleedBlock: {
       borderWidth: 0,
       borderRadius: 0,
       overflow: "hidden",
-      backgroundColor: theme.colors.surface1,
+      // The expanded card already paints its glass tint; an opaque fill here
+      // would turn the body into a plate again.
+      backgroundColor: "transparent",
     },
     codeVerticalScroll: {},
     codeVerticalContent: {
@@ -930,9 +932,9 @@ const styles = StyleSheet.create((theme) => {
     },
     scrollArea: {
       borderWidth: theme.borderWidth[1],
-      borderColor: theme.colors.border,
+      borderColor: theme.colors.borderGlass,
       borderRadius: theme.borderRadius.base,
-      backgroundColor: theme.colors.surface2,
+      backgroundColor: theme.colors.surfaceCard,
     },
     scrollContent: {
       padding: insets.padding,
@@ -982,7 +984,7 @@ const styles = StyleSheet.create((theme) => {
     },
     jsonScroll: {
       borderWidth: theme.borderWidth[1],
-      borderColor: theme.colors.border,
+      borderColor: theme.colors.borderGlass,
       borderRadius: theme.borderRadius.base,
       backgroundColor: theme.colors.surface2,
     },

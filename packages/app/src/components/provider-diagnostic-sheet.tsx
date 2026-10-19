@@ -756,7 +756,7 @@ const sheetStyles = StyleSheet.create((theme) => ({
     paddingVertical: theme.spacing[3],
     color: theme.colors.foreground,
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     fontSize: theme.fontSize.base,
   },
   iconButton: {
@@ -801,7 +801,7 @@ const sheetStyles = StyleSheet.create((theme) => ({
     paddingHorizontal: theme.spacing[4],
     gap: theme.spacing[3],
     borderTopWidth: 1,
-    borderTopColor: theme.colors.border,
+    borderTopColor: theme.colors.borderGlass,
   },
   modelTitle: {
     color: theme.colors.foreground,

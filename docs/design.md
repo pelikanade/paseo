@@ -2,6 +2,8 @@
 
 Tokens — every color, font size, weight, spacing step, radius, icon size — live in `packages/app/src/styles/theme.ts`.
 
+The Linux desktop glass layer is a fork-only feature on top of these tokens. See [desktop-transparency.md](desktop-transparency.md) before using or changing the `surfaceGlass` / `surface*` / `borderGlass` roles.
+
 ---
 
 ## 1. Character

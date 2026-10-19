@@ -29,7 +29,6 @@ import { shouldRenderSyncedStatusLoader } from "@/utils/status-loader";
 import { StatusRing } from "@/components/status-ring";
 import { resolveSidebarWorkspacePrimaryLabel } from "@/components/sidebar/sidebar-workspace-title";
 import { DensityIcon } from "@/components/ui/density-icon";
-import { TrailingActionScrim } from "@/components/ui/trailing-action-scrim";
 import { useWorkspaceLabelDefinitions } from "@/workspace-labels";
 
 const needsInputColorMapping = (theme: Theme) => ({
@@ -298,7 +297,7 @@ export const sidebarWorkspaceRowStyles = StyleSheet.create((theme) => ({
     justifyContent: "center",
     borderRadius: theme.borderRadius.sm,
     borderWidth: 1,
-    borderColor: theme.colors.surface2,
+    borderColor: theme.colors.borderGlass,
     backgroundColor: theme.colors.surface0,
     flexShrink: 0,
   },
@@ -370,7 +369,6 @@ export function resolveTrailingActionVisibility({
 }): {
   trailingPresentation: SidebarWorkspaceTrailingPresentation;
   showKebab: boolean;
-  showScrim: boolean;
   renderSlot: boolean;
   reserveSlotWidth: boolean;
 } {
@@ -384,15 +382,10 @@ export function resolveTrailingActionVisibility({
   return {
     trailingPresentation,
     showKebab,
-    // The scrim paints the row's own hover background, so it can only be drawn on a hovered
-    // row — over an unhovered one the gradient fades to the wrong color. That is also why
-    // touch, which shows the kebab without ever hovering, never gets one.
-    showScrim: showKebab && isHovered,
     renderSlot: hasArchiveAction || hasTrailing,
     // The slot only holds width for something that permanently sits in it. Trailing content
-    // does; the kebab only does on touch, where there is no hover for it to appear on and so
-    // no scrim to let it overlay the title. Everywhere else the width goes back to the title
-    // and the kebab fades in over its tail.
+    // does; the kebab only does on touch, where there is no hover for it to appear on.
+    // Everywhere else the width goes back to the title and the kebab overlays its tail.
     reserveSlotWidth: hasContent || (hasArchiveAction && isTouchPlatform),
   };
 }
@@ -434,23 +427,13 @@ export function SidebarWorkspaceTrailingActionBase({
 
 export function SidebarWorkspaceTrailingActionOverlay({
   visible,
-  scrimBackdrop,
   children,
 }: {
   visible: boolean;
-  /** Fade the row into the kebab when something (the diff stat) is still rendered behind it. */
-  scrimBackdrop?: SidebarSurfaceBackdrop;
   children: ReactNode;
 }) {
   if (!visible || !children) return null;
-  return (
-    <>
-      {scrimBackdrop ? (
-        <TrailingActionScrim backdrop={scrimBackdrop} testID="sidebar-workspace-trailing-scrim" />
-      ) : null}
-      <View style={sidebarWorkspaceRowStyles.trailingActionOverlay}>{children}</View>
-    </>
-  );
+  return <View style={sidebarWorkspaceRowStyles.trailingActionOverlay}>{children}</View>;
 }
 
 // The status dot centres on the title's first line, so both share its line height.
@@ -531,18 +514,18 @@ const styles = StyleSheet.create((theme) => ({
   },
   statusDotNeedsInput: {
     backgroundColor: getStatusDotColor({ theme, bucket: "needs_input" }) ?? undefined,
-    borderColor: theme.colors.surface0,
+    borderColor: theme.colors.borderGlass,
   },
   statusDotFailed: {
     backgroundColor: getStatusDotColor({ theme, bucket: "failed" }) ?? undefined,
-    borderColor: theme.colors.surface0,
+    borderColor: theme.colors.borderGlass,
   },
   statusDotRunning: {
     backgroundColor: getStatusDotColor({ theme, bucket: "running" }) ?? undefined,
-    borderColor: theme.colors.surface0,
+    borderColor: theme.colors.borderGlass,
   },
   statusDotAttention: {
     backgroundColor: getStatusDotColor({ theme, bucket: "attention" }) ?? undefined,
-    borderColor: theme.colors.surface0,
+    borderColor: theme.colors.borderGlass,
   },
 }));

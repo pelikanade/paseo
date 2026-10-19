@@ -836,15 +836,15 @@ const styles = StyleSheet.create((theme) => ({
     paddingVertical: theme.spacing[1.5],
     paddingHorizontal: theme.spacing[3],
     borderRadius: theme.borderRadius.md,
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCard,
     borderWidth: theme.borderWidth[1],
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
   },
   filterTriggerHovered: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceRowHover,
   },
   filterTriggerPressed: {
-    backgroundColor: theme.colors.surface3,
+    backgroundColor: theme.colors.surfaceRowPressed,
   },
   filterTriggerText: {
     flexShrink: 1,
@@ -870,10 +870,10 @@ const styles = StyleSheet.create((theme) => ({
     borderRadius: theme.borderRadius.lg,
   },
   rowHovered: {
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   rowPressed: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   rowIconWrap: {
     width: theme.iconSize.md,
@@ -924,7 +924,7 @@ const styles = StyleSheet.create((theme) => ({
   errorBanner: {
     marginBottom: theme.spacing[2],
     borderWidth: theme.borderWidth[1],
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     borderRadius: theme.borderRadius.lg,
     paddingVertical: theme.spacing[1],
     paddingHorizontal: theme.spacing[3],
@@ -963,7 +963,7 @@ const styles = StyleSheet.create((theme) => ({
     borderRadius: theme.borderRadius.lg,
   },
   refreshButtonPressed: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.interactionHighlight,
   },
   refreshIconSlot: {
     width: 16,

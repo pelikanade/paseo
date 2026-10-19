@@ -14,7 +14,7 @@ import type { Theme } from "@/styles/theme";
 import { useInstalledPlugin } from "../registry";
 import { PluginInstallationProvider } from "../installation-provider";
 import { SurfaceErrorBoundary } from "../surface-error-boundary";
-import { toPluginTheme } from "../theme";
+import { toPluginGlassTheme } from "../theme";
 import { buildPluginSettingsRoute } from "./routes";
 
 interface SettingsIdentity {
@@ -128,7 +128,7 @@ function SettingsContent({
 }
 const ThemedSettingsContent = withUnistyles(SettingsContent);
 // Settings routes carry no screen params.
-const themeMapping = (theme: Theme) => ({ theme: toPluginTheme(theme) });
+const themeMapping = (theme: Theme) => ({ theme: toPluginGlassTheme(theme) });
 export function PluginSettingsContent({
   onBackToPlugins,
   showBackToPlugins,

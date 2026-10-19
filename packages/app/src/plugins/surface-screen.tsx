@@ -18,7 +18,7 @@ import type { Theme } from "@/styles/theme";
 import type { ShortcutKey } from "@/utils/format-shortcut";
 import { usePluginHostNavigation } from "./host-navigation";
 import { resolvePluginIcon } from "./icons";
-import { toPluginTheme } from "./theme";
+import { toPluginGlassTheme } from "./theme";
 import { useInstalledPlugin, usePluginInstallations } from "./registry";
 import { buildPluginSurfaceRoute, pluginScreenParamsFromRoute } from "./routes";
 import {
@@ -39,7 +39,7 @@ import { resolvePluginPlatform } from "./platform";
 const EMPTY_SHORTCUT_KEYS: ShortcutKey[] = [];
 const mutedColorMapping = (theme: Theme) => ({ color: theme.colors.foregroundMuted });
 const pluginThemeMapping = (theme: Theme) => ({
-  theme: toPluginTheme(theme),
+  theme: toPluginGlassTheme(theme),
 });
 const ThemedX = withUnistyles(X);
 
@@ -256,7 +256,7 @@ export function PluginSurfaceScreen() {
 const styles = StyleSheet.create((theme) => ({
   screen: {
     flex: 1,
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: "transparent",
   },
   body: {
     flex: 1,

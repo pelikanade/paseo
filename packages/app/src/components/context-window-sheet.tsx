@@ -15,7 +15,7 @@ import {
 // See docs/unistyles.md.
 const ThemedBottomSheetModal = withUnistyles(IsolatedBottomSheetModal, (theme) => ({
   backgroundStyle: {
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: theme.colors.surfaceMenu,
     borderTopLeftRadius: theme.borderRadius["2xl"],
     borderTopRightRadius: theme.borderRadius["2xl"],
   },

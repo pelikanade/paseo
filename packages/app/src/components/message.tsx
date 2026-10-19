@@ -309,7 +309,7 @@ const userMessageStylesheet = StyleSheet.create((theme) => ({
     marginBottom: theme.spacing[4],
   },
   bubble: {
-    backgroundColor: theme.colors.surface3,
+    backgroundColor: theme.colors.surfaceRowSelected,
     borderRadius: theme.borderRadius["2xl"],
     borderTopRightRadius: theme.borderRadius.sm,
     paddingHorizontal: theme.spacing[4],
@@ -955,7 +955,7 @@ const expandableBadgeStylesheet = StyleSheet.create((theme) => ({
     borderBottomRightRadius: theme.borderRadius.lg,
     borderWidth: theme.borderWidth[1],
     borderTopWidth: 0,
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     padding: 0,
     gap: 0,
     flexShrink: 1,
@@ -964,10 +964,10 @@ const expandableBadgeStylesheet = StyleSheet.create((theme) => ({
     ...(isWeb ? { cursor: "auto" as const, userSelect: "text" as const } : {}),
   },
   pressableExpanded: {
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCard,
   },
   pressableExpandedAttached: {
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0,
   },
@@ -1380,7 +1380,7 @@ const compactionStylesheet = StyleSheet.create((theme) => ({
   line: {
     flex: 1,
     height: 1,
-    backgroundColor: theme.colors.border,
+    backgroundColor: theme.colors.borderGlass,
   },
   label: {
     flexDirection: "row",

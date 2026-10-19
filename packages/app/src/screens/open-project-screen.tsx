@@ -179,7 +179,7 @@ function HomeTile({ icon: Icon, title, description, onPress, testID, accent }: H
 const styles = StyleSheet.create((theme) => ({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: "transparent",
     userSelect: "none",
   },
   scroll: {
@@ -220,14 +220,14 @@ const styles = StyleSheet.create((theme) => ({
     width: { xs: "100%", md: 220 },
     minHeight: { xs: 0, md: 132 },
     padding: theme.spacing[4],
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCard,
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     borderRadius: theme.borderRadius.xl,
     gap: theme.spacing[3],
   },
   tileHovered: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceRowHover,
     borderColor: theme.colors.borderAccent,
   },
   tilePressed: {

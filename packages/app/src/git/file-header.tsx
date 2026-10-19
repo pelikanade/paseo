@@ -363,7 +363,7 @@ const styles = StyleSheet.create((theme) => ({
   container: { width: "100%", overflow: "hidden", userSelect: "none" },
   documentContainer: {
     height: 30,
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: theme.colors.surfaceCard,
     borderBottomWidth: theme.borderWidth[1],
     borderBottomColor: theme.colors.borderAccent,
   },
@@ -398,8 +398,8 @@ const styles = StyleSheet.create((theme) => ({
     paddingLeft: theme.spacing[3],
     paddingRight: WORKSPACE_PANE_TRAILING_GLYPH_RAIL,
   },
-  documentActive: { backgroundColor: theme.colors.surface1 },
-  documentPressFeedback: { backgroundColor: theme.colors.surface1 },
+  documentActive: { backgroundColor: theme.colors.surfaceRowSelected },
+  documentPressFeedback: { backgroundColor: theme.colors.surfaceRowPressed },
   canvasInteraction: {
     backgroundColor: "transparent",
     borderColor: "transparent",

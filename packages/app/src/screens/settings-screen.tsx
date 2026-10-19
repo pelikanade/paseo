@@ -1519,7 +1519,7 @@ export default function SettingsScreen({ view, openAddHostIntent = null }: Setti
 const styles = StyleSheet.create((theme) => ({
   loadingContainer: {
     flex: 1,
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: "transparent",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -1529,7 +1529,7 @@ const styles = StyleSheet.create((theme) => ({
   },
   container: {
     flex: 1,
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: "transparent",
   },
   scrollView: {
     flex: 1,
@@ -1580,7 +1580,7 @@ const sidebarStyles = StyleSheet.create((theme) => ({
   desktopContainer: {
     width: SETTINGS_DESKTOP_SIDEBAR_WIDTH,
     borderRightWidth: 1,
-    borderRightColor: theme.colors.border,
+    borderRightColor: theme.colors.borderGlass,
     backgroundColor: theme.colors.surfaceSidebar,
   },
   scrollBody: {
@@ -1622,10 +1622,10 @@ const sidebarStyles = StyleSheet.create((theme) => ({
     backgroundColor: { xs: theme.colors.surface1, md: "transparent" },
   },
   itemHovered: {
-    backgroundColor: theme.colors.surfaceSidebarHover,
+    backgroundColor: theme.colors.surfaceRowHover,
   },
   itemSelected: {
-    backgroundColor: theme.colors.surfaceSidebarHover,
+    backgroundColor: theme.colors.surfaceRowSelected,
   },
   // The workspace rows' pressed fill.
   itemPressed: {
@@ -1648,7 +1648,7 @@ const sidebarStyles = StyleSheet.create((theme) => ({
     backgroundColor: { xs: theme.colors.surface1, md: "transparent" },
   },
   pickerTriggerHovered: {
-    backgroundColor: theme.colors.surfaceSidebarHover,
+    backgroundColor: theme.colors.surfaceRowHover,
   },
   pickerTriggerLabel: {
     flex: 1,

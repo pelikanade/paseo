@@ -633,13 +633,13 @@ const styles = StyleSheet.create((theme) => ({
     marginLeft: theme.spacing[2],
   },
   rowSelected: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceRowSelected,
   },
   rowHovered: {
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceRowHover,
   },
   rowPressed: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceRowPressed,
   },
   sessionTitle: {
     flexShrink: 1,
@@ -698,7 +698,7 @@ const styles = StyleSheet.create((theme) => ({
     backgroundColor: "rgba(0,0,0,0.35)",
   },
   sheetContainer: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceMenu,
     borderTopLeftRadius: theme.borderRadius["2xl"],
     borderTopRightRadius: theme.borderRadius["2xl"],
     paddingHorizontal: theme.spacing[6],
@@ -742,7 +742,7 @@ const styles = StyleSheet.create((theme) => ({
     opacity: 0.5,
   },
   sheetCancelButton: {
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCard,
   },
   sheetCancelText: {
     color: theme.colors.foreground,

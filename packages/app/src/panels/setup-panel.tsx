@@ -569,7 +569,7 @@ const styles = StyleSheet.create((theme) => ({
   container: {
     flex: 1,
     minHeight: 0,
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: "transparent",
   },
   contentContainer: {
     padding: theme.spacing[4],
@@ -607,7 +607,7 @@ const styles = StyleSheet.create((theme) => ({
   commandItem: {
     borderRadius: theme.borderRadius.lg,
     borderWidth: theme.borderWidth[1],
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     overflow: "hidden",
   },
   commandRow: {
@@ -616,11 +616,11 @@ const styles = StyleSheet.create((theme) => ({
     gap: theme.spacing[2],
     paddingHorizontal: theme.spacing[3],
     paddingVertical: theme.spacing[2],
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCard,
   },
   commandRowExpanded: {
     borderBottomWidth: theme.borderWidth[1],
-    borderBottomColor: theme.colors.border,
+    borderBottomColor: theme.colors.borderGlass,
   },
   commandRowPressed: {
     opacity: 0.8,
@@ -649,7 +649,7 @@ const styles = StyleSheet.create((theme) => ({
     transform: [{ rotate: "90deg" }],
   },
   commandDetail: {
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: theme.colors.surfaceCode,
   },
   logScroll: {
     maxHeight: 400,

@@ -207,7 +207,7 @@ const styles = StyleSheet.create((theme) => ({
     bottom: 0,
     left: 0,
     height: theme.borderWidth[1],
-    backgroundColor: theme.colors.border,
+    backgroundColor: theme.colors.borderGlass,
   },
   content: {
     flex: 1,

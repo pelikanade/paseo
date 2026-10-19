@@ -73,7 +73,7 @@ const styles = StyleSheet.create((theme) => ({
   },
   frontMatterTable: {
     borderWidth: theme.borderWidth[1],
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     borderRadius: theme.borderRadius.lg,
     overflow: "hidden",
     marginBottom: theme.spacing[6],
@@ -84,14 +84,14 @@ const styles = StyleSheet.create((theme) => ({
   },
   frontMatterRowBorder: {
     borderTopWidth: theme.borderWidth[1],
-    borderTopColor: theme.colors.border,
+    borderTopColor: theme.colors.borderGlass,
   },
   frontMatterKeyCell: {
     flexBasis: "30%",
     maxWidth: 180,
     paddingHorizontal: theme.spacing[3],
     paddingVertical: theme.spacing[2],
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceCard,
   },
   frontMatterValueCell: {
     flex: 1,

@@ -172,16 +172,16 @@ const styles = StyleSheet.create((theme) => ({
   bordered: {
     borderRadius: theme.borderRadius.lg,
     borderWidth: theme.borderWidth[1],
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
   },
   surface0: {
-    backgroundColor: theme.colors.surface0,
+    backgroundColor: theme.colors.surfaceCode,
   },
   surface1: {
-    backgroundColor: theme.colors.surface1,
+    backgroundColor: theme.colors.surfaceCode,
   },
   surface2: {
-    backgroundColor: theme.colors.surface2,
+    backgroundColor: theme.colors.surfaceCode,
   },
   content: {
     paddingVertical: theme.spacing[3],

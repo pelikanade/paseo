@@ -512,7 +512,7 @@ const styles = StyleSheet.create((theme) => ({
     backgroundColor: theme.colors.surface2,
     borderRadius: theme.borderRadius.md,
     borderWidth: 1,
-    borderColor: theme.colors.border,
+    borderColor: theme.colors.borderGlass,
     paddingHorizontal: theme.spacing[3],
   },
   featureRow: {
@@ -524,7 +524,7 @@ const styles = StyleSheet.create((theme) => ({
   },
   featureRowBorder: {
     borderTopWidth: 1,
-    borderTopColor: theme.colors.border,
+    borderTopColor: theme.colors.borderGlass,
   },
   featureMeta: {
     flex: 1,

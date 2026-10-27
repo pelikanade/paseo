@@ -100,6 +100,18 @@ buildNpmPackage {
     # Native deps (terminal emulation; libuv-linked on Linux)
     npm rebuild node-pty
 
+    # buildNpmPackage installs with `npm ci --ignore-scripts`, which skips the
+    # root postinstall that applies patches/. The renderer imports exports those
+    # patches add (for example @gorhom's BottomSheetModalInternalProvider), so an
+    # unpatched install renders `undefined` as a component and the window dies
+    # with React error #130 before the first screen.
+    export PATH="$PWD/node_modules/.bin:$PATH"
+    if ! command -v patch-package > /dev/null; then
+      echo "patch-package is missing; the app would ship unpatched dependencies" >&2
+      exit 1
+    fi
+    node scripts/postinstall-patches.mjs
+
     # Server workspaces (highlight + relay + protocol + client + server + cli)
     npm run build:server
 
